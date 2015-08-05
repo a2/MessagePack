@@ -79,10 +79,10 @@ public func unpack<G: GeneratorType where G.Element == UInt8>(inout generator: G
         // fixstr
         case 0xa0...0xbf:
             let length = Int(value - 0xa0)
-            if let string = joinString(&generator, length) {
-                return .String(string)
+            if let data = joinData(&generator, length) {
+                return .Binary(data)
             }
-
+        
         // nil
         case 0xc0:
             return .Nil
@@ -175,11 +175,22 @@ public func unpack<G: GeneratorType where G.Element == UInt8>(inout generator: G
                 }
             }
 
-        // str 8, 16, 32
-        case 0xd9...0xdb:
-            let lengthSize = 1 << Int(value - 0xd9)
-            if let length = joinUInt64(&generator, lengthSize), string = joinString(&generator, Int(length)) {
-                return .String(string)
+        // str 8 (raw)
+        case 0xd9:
+            if let length = joinUInt64(&generator, 1), data = joinData(&generator, Int(length)) {
+                return .Binary(data)
+            }
+            
+        // str 16 (raw)
+        case 0xda:
+            if let length = joinUInt64(&generator, 2), data = joinData(&generator, Int(length)) {
+                return .Binary(data)
+            }
+            
+        // str 32 (raw)
+        case 0xdb:
+            if let length = joinUInt64(&generator, 4), data = joinData(&generator, Int(length)) {
+                return .Binary(data)
             }
             
         // array 16
@@ -616,6 +627,14 @@ extension MessagePackValue {
     /// The contained string if `.String`, `nil` otherwise.
     public var stringValue: Swift.String? {
         switch self {
+        case .Binary(let data):
+            // convert binary to string
+            if let string = NSString(data: data, encoding:NSASCIIStringEncoding) {
+                return string as Swift.String
+            }
+            else {
+                return nil
+            }
         case .String(let string):
             return string
         default:
