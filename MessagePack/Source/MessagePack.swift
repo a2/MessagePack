@@ -150,12 +150,30 @@ public func unpack<G: GeneratorType where G.Element == UInt8>(inout generator: G
                 return .Double(double)
             }
 
-        // uint 8, 16, 32, 64
-        case 0xcc...0xcf:
-            let length = 1 << (Int(value) - 0xcc)
-            if let integer = joinUInt64(&generator, length) {
+        // uint 8
+        case 0xcc:
+            if let integer = joinUInt64(&generator, 1) {
                 return .UInt(integer)
             }
+            
+        // uint 16
+        case 0xcd:
+            if let integer = joinUInt64(&generator, 2) {
+                return .UInt(integer)
+            }
+            
+        // uint 32
+        case 0xce:
+            if let integer = joinUInt64(&generator, 4) {
+                return .UInt(integer)
+            }
+            
+        // uint 64
+        case 0xcf:
+            if let integer = joinUInt64(&generator, 8) {
+                return .UInt(integer)
+            }
+            
 
         // int 8
         case 0xd0:
@@ -180,7 +198,7 @@ public func unpack<G: GeneratorType where G.Element == UInt8>(inout generator: G
 
         // int 64
         case 0xd3:
-            if let bytes = joinUInt64(&generator, 2) {
+            if let bytes = joinUInt64(&generator, 8) {
                 let integer = Int64(bitPattern: bytes)
                 return .Int(integer)
             }
@@ -253,11 +271,11 @@ public func unpack<G: GeneratorType where G.Element == UInt8>(inout generator: G
                 return .Map(dict)
             }
 
-            // negative fixint
+        // negative fixint
         case 0xe0..<0xff:
             return .Int(numericCast(value) - 0x100)
             
-            // negative fixint (workaround for rdar://19779978)
+        // negative fixint (workaround for rdar://19779978)
         case 0xff:
             return .Int(numericCast(value) - 0x100)
 
