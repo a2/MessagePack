@@ -1,5 +1,7 @@
 import Foundation
 
+let MSGP_COMPATIBILITY_MODE = true
+
 /**
     The MessagePackValue enum encapsulates the following types:
 
@@ -79,10 +81,17 @@ public func unpack<G: GeneratorType where G.Element == UInt8>(inout generator: G
         // fixstr
         case 0xa0...0xbf:
             let length = Int(value - 0xa0)
-            if let string = joinString(&generator, length) {
-                return .String(string)
+            if (MSGP_COMPATIBILITY_MODE) {
+                if let data = joinData(&generator, length) {
+                    return .Binary(data)
+                }
             }
-
+            else {
+                if let string = joinString(&generator, length) {
+                    return .String(string)
+                }
+            }
+        
         // nil
         case 0xc0:
             return .Nil
@@ -99,13 +108,24 @@ public func unpack<G: GeneratorType where G.Element == UInt8>(inout generator: G
         case 0xc3:
             return .Bool(true)
 
-        // bin 8, 16, 32
-        case 0xc4...0xc6:
-            let size = 1 << Int(value - 0xc4)
-            if let length = joinUInt64(&generator, size), data = joinData(&generator, Int(length)) {
+        // bin 8
+        case 0xc4:
+            if let length = joinUInt64(&generator, 1), data = joinData(&generator, Int(length)) {
                 return .Binary(data)
             }
-
+            
+        // bin 16
+        case 0xc5:
+            if let length = joinUInt64(&generator, 2), data = joinData(&generator, Int(length)) {
+                return .Binary(data)
+            }
+            
+        // bin 32
+        case 0xc6:
+            if let length = joinUInt64(&generator, 4), data = joinData(&generator, Int(length)) {
+                return .Binary(data)
+            }
+            
         // ext 8, 16, 32
         case 0xc7...0xc9:
             let size = 1 << Int(value - 0xc7)
@@ -130,12 +150,30 @@ public func unpack<G: GeneratorType where G.Element == UInt8>(inout generator: G
                 return .Double(double)
             }
 
-        // uint 8, 16, 32, 64
-        case 0xcc...0xcf:
-            let length = 1 << (Int(value) - 0xcc)
-            if let integer = joinUInt64(&generator, length) {
+        // uint 8
+        case 0xcc:
+            if let integer = joinUInt64(&generator, 1) {
                 return .UInt(integer)
             }
+            
+        // uint 16
+        case 0xcd:
+            if let integer = joinUInt64(&generator, 2) {
+                return .UInt(integer)
+            }
+            
+        // uint 32
+        case 0xce:
+            if let integer = joinUInt64(&generator, 4) {
+                return .UInt(integer)
+            }
+            
+        // uint 64
+        case 0xcf:
+            if let integer = joinUInt64(&generator, 8) {
+                return .UInt(integer)
+            }
+            
 
         // int 8
         case 0xd0:
@@ -160,7 +198,7 @@ public func unpack<G: GeneratorType where G.Element == UInt8>(inout generator: G
 
         // int 64
         case 0xd3:
-            if let bytes = joinUInt64(&generator, 2) {
+            if let bytes = joinUInt64(&generator, 8) {
                 let integer = Int64(bitPattern: bytes)
                 return .Int(integer)
             }
@@ -175,11 +213,43 @@ public func unpack<G: GeneratorType where G.Element == UInt8>(inout generator: G
                 }
             }
 
-        // str 8, 16, 32
-        case 0xd9...0xdb:
-            let lengthSize = 1 << Int(value - 0xd9)
-            if let length = joinUInt64(&generator, lengthSize), string = joinString(&generator, Int(length)) {
-                return .String(string)
+        // str 8 (raw)
+        case 0xd9:
+            if (MSGP_COMPATIBILITY_MODE) {
+                if let length = joinUInt64(&generator, 1), data = joinData(&generator, Int(length)) {
+                    return .Binary(data)
+                }
+            }
+            else {
+                if let length = joinUInt64(&generator, 1), string = joinString(&generator, Int(length)) {
+                    return .String(string)
+                }
+            }
+            
+        // str 16 (raw)
+        case 0xda:
+            if (MSGP_COMPATIBILITY_MODE) {
+                if let length = joinUInt64(&generator, 2), data = joinData(&generator, Int(length)) {
+                    return .Binary(data)
+                }
+            }
+            else {
+                if let length = joinUInt64(&generator, 2), string = joinString(&generator, Int(length)) {
+                    return .String(string)
+                }
+            }
+            
+        // str 32 (raw)
+        case 0xdb:
+            if (MSGP_COMPATIBILITY_MODE) {
+                if let length = joinUInt64(&generator, 4), data = joinData(&generator, Int(length)) {
+                    return .Binary(data)
+                }
+            }
+            else {
+                if let length = joinUInt64(&generator, 4), string = joinString(&generator, Int(length)) {
+                    return .String(string)
+                }
             }
             
         // array 16
@@ -616,6 +686,14 @@ extension MessagePackValue {
     /// The contained string if `.String`, `nil` otherwise.
     public var stringValue: Swift.String? {
         switch self {
+        case .Binary(let data):
+            // convert binary to string
+            if let string = NSString(data: data, encoding:NSASCIIStringEncoding) {
+                return string as Swift.String
+            }
+            else {
+                return nil
+            }
         case .String(let string):
             return string
         default:
