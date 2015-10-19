@@ -13,7 +13,7 @@ class ArrayTests: XCTestCase {
         let packed: Data = [0x95, 0x00, 0x01, 0x02, 0x03, 0x04]
         XCTAssertEqual(pack(.Array(value)), packed)
     }
-
+    
     func testUnpackFixarray() {
         let packed: Data = [0x95, 0x00, 0x01, 0x02, 0x03, 0x04]
         let value: [MessagePackValue] = [.UInt(0), .UInt(1), .UInt(2), .UInt(3), .UInt(4)]

@@ -55,7 +55,7 @@ class BinaryTests: XCTestCase {
         let unpacked = try? unpack(data)
         XCTAssertEqual(unpacked, MessagePackValue.Binary(value))
     }
-
+    
     func testUnpackInsufficientData() {
         let dataArray: [Data] = [
             // only type byte

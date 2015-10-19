@@ -41,7 +41,7 @@ class StringTests: XCTestCase {
         let unpacked = try? unpack(packed)
         XCTAssertEqual(unpacked, MessagePackValue.String("Hello, world!"))
     }
-
+    
     func testPackStr8() {
         let str = string(0x20)
         XCTAssertEqual(pack(.String(str)), [0xd9, 0x20] + data(str))
