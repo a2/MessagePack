@@ -63,8 +63,6 @@ class ConvenienceInitializersTests: XCTestCase {
 
     func testArray() {
         XCTAssertEqual(MessagePackValue([.UInt(0), .UInt(1), .UInt(2), .UInt(3), .UInt(4)]), MessagePackValue.Array([.UInt(0), .UInt(1), .UInt(2), .UInt(3), .UInt(4)]))
-        
-        //XCTAssertEqual(Array(arrayLiteral: MessagePackValue([.UInt(0), .UInt(1), .UInt(2), .UInt(3), .UInt(4)])), [.UInt(0), .UInt(1), .UInt(2), .UInt(3), .UInt(4)])
     }
 
     func testMap() {
