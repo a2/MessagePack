@@ -95,6 +95,19 @@ class ConveniencePropertiesTests: XCTestCase {
         XCTAssertNotNil(dataValue)
         XCTAssertEqual(dataValue!, [0x00, 0x01, 0x02, 0x03, 0x04])
     }
+    
+    func testNSDataValue() {
+        XCTAssert(MessagePackValue.Nil.nsDataValue == nil)
+        
+        var dataValue = MessagePackValue.Binary([0x00, 0x01, 0x02, 0x03, 0x04]).nsDataValue
+        print(dataValue)
+        XCTAssertNotNil(dataValue)
+        XCTAssertEqual(dataValue!, NSData(bytes: [0x00, 0x01, 0x02, 0x03, 0x04] as [UInt8], length: 5))
+        
+        dataValue = MessagePackValue.Extended(4, [0x00, 0x01, 0x02, 0x03, 0x04]).nsDataValue
+        XCTAssertNotNil(dataValue)
+        XCTAssertEqual(dataValue!, NSData(bytes: [0x00, 0x01, 0x02, 0x03, 0x04] as [UInt8], length: 5))
+    }
 
     func testExtendedValue() {
         XCTAssert(MessagePackValue.Nil.extendedValue == nil)

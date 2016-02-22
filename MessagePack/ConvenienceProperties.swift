@@ -138,6 +138,12 @@ extension MessagePackValue {
         }
     }
 
+    // The contained data as NSData if `.Binary` or `.Extended`, `nil` otherwise.
+    public var nsDataValue : NSData? {
+        guard let bytes = self.dataValue else { return nil }
+        return NSData(bytes: bytes, length: bytes.count)
+    }
+
     /// The contained type and data if Extended, `nil` otherwise.
     public var extendedValue: (Int8, Data)? {
         switch self {

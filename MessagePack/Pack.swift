@@ -182,3 +182,8 @@ public func pack(value: MessagePackValue) -> Data {
         return prefix + data
     }
 }
+
+public func nsPack(value: MessagePackValue) -> NSData? {
+    let data = pack(value)
+    return NSData(bytes: data, length: data.count)
+}
