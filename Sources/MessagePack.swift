@@ -1,5 +1,4 @@
-public typealias Byte = UInt8
-public typealias Data = [Byte]
+import Data
 
 /// The MessagePackValue enum encapsulates one of the following types: Nil, Bool, Int, UInt, Float, Double, String, Binary, Array, Map, and Extended.
 public enum MessagePackValue {
@@ -10,10 +9,10 @@ public enum MessagePackValue {
     case Float(Swift.Float)
     case Double(Swift.Double)
     case String(Swift.String)
-    case Binary(Data)
+    case Binary(Data<UInt8>)
     case Array([MessagePackValue])
     case Map([MessagePackValue : MessagePackValue])
-    case Extended(Int8, Data)
+    case Extended(Int8, Data<UInt8>)
 }
 
 extension MessagePackValue: Hashable {
@@ -85,13 +84,13 @@ extension MessagePackValue: CustomStringConvertible {
         case let .String(string):
             return "String(\(string))"
         case let .Binary(data):
-            return "Data(\(dataDescription(data)))"
+            return "Data(\(data))"
         case let .Array(array):
             return "Array(\(array.description))"
         case let .Map(dict):
             return "Map(\(dict.description))"
         case let .Extended(type, data):
-            return "Extended(\(type), \(dataDescription(data)))"
+            return "Extended(\(type), \(data))"
         }
     }
 }
@@ -99,19 +98,4 @@ extension MessagePackValue: CustomStringConvertible {
 public enum MessagePackError: ErrorType {
     case InsufficientData
     case InvalidData
-}
-
-func dataDescription(data: Data) -> String {
-    let bytes = data.map { byte -> String in
-        let prefix: String
-        if byte < 0x10 {
-            prefix = "0x0"
-        } else {
-            prefix = "0x"
-        }
-
-        return prefix + String(byte, radix: 16)
-    }
-
-    return "[" + bytes.joinWithSeparator(", ") + "]"
 }

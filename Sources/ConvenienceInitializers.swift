@@ -1,3 +1,5 @@
+import Data
+
 extension MessagePackValue {
     public init() {
         self = .Nil
@@ -7,11 +9,11 @@ extension MessagePackValue {
         self = .Bool(value)
     }
 
-    public init<S: SignedIntegerType>(_ value: S) {
+    public init<T: SignedIntegerType>(_ value: T) {
         self = .Int(numericCast(value))
     }
 
-    public init<U: UnsignedIntegerType>(_ value: U) {
+    public init<T: UnsignedIntegerType>(_ value: T) {
         self = .UInt(numericCast(value))
     }
 
@@ -35,7 +37,7 @@ extension MessagePackValue {
         self = .Map(value)
     }
 
-    public init(_ value: Data) {
-        self = .Binary(value)
+    public init<T>(_ value: Data<T>) {
+        self = .Binary(try! Data(value.data))
     }
 }

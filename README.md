@@ -1,31 +1,35 @@
-MessagePack.swift
-=================
+# MessagePack.swift
 
-## License
+> It's like JSON.
+> but fast and small.
 
-MessagePack.swift is released under the [MIT license](https://github.com/a2/MessagePack.swift/blob/master/LICENSE), which is reproduced below in its entirety:
+MessagePack is an efficient binary serialization format. It lets you exchange data among multiple languages like JSON. But it's faster and smaller. Small integers are encoded into a single byte, and typical short strings require only one extra byte in addition to the strings themselves.
 
-> Copyright (c) 2015 Alexsander Akers
-> 
-> Permission is hereby granted, free of charge, to any person obtaining a copy
-> of this software and associated documentation files (the "Software"), to deal
-> in the Software without restriction, including without limitation the rights
-> to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-> copies of the Software, and to permit persons to whom the Software is
-> furnished to do so, subject to the following conditions:
-> 
-> The above copyright notice and this permission notice shall be included in all
-> copies or substantial portions of the Software.
-> 
-> THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-> IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-> FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-> AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-> LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-> OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-> SOFTWARE.
+For more information, go to MessagePack's website at [msgpack.org](http://msgpack.org).
 
+## Usage
+
+```swift
+import MessagePack
+
+let packedInt = pack(.UInt(42))
+// -> [0x2a]
+
+let unpackedInt = try! unpack([0x2a])
+// -> MessagePack.Int(42)
+
+let packedArray = pack([0, 1, 2, 3, 4])
+// -> [0x95, 0x00, 0x01, 0x02, 0x03, 0x04]
+```
+
+## Installation
+
+Installation is supported with CocoaPods, Carthage, Swift Package Manage, and with Git submodules. See INSTALL for details.
 
 ## Availability
 
-MessagePack.swift is intended for use with Swift 2.0. Compatibility with past and future versions is not guaranteed.
+MessagePack.swift is intended for use with Swift 2.2. Compatibility with past and future versions is not guaranteed.
+
+## License
+
+MessagePack.swift is released under the MIT license. See LICENSE for details.

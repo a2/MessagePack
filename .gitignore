@@ -17,6 +17,7 @@ DerivedData
 *.ipa
 *.xcuserstate
 
-# CocoaPods
+# Swift Package Manager
 #
-Pods/
+/.build
+Packages/
