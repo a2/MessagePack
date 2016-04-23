@@ -1,33 +1,78 @@
 extension MessagePackValue {
-    /// The number of elements in the `.Array` or `.Map`, `nil` otherwise.
-    public var count: Swift.Int? {
+    /// The number of elements in the `.Array` or `.Map`, `0` otherwise.
+    public var count: Swift.Int {
         switch self {
         case let .Array(array):
             return array.count
         case let .Map(dict):
             return dict.count
         default:
-            return nil
+            return 0
         }
     }
 
-    /// The element at subscript `i` in the `.Array`, `nil` otherwise.
-    public subscript (i: Swift.Int) -> MessagePackValue? {
-        switch self {
-        case let .Array(array):
-            return i < array.count ? array[i] : Optional.None
-        default:
-            return nil
-        }
+    /// The element at subscript `sub` in the `.Array`, `.Nil` otherwise.
+    public subscript (sub: Swift.Int) -> MessagePackValue {
+        get             { return self[.Int(Int64(sub))] }
+        set(newValue)   { self[.Int(Int64(sub))] = newValue }
     }
+    
+    /// The element at keyed subscript `sub` in the `.Map`, `.Nil` otherwise.
+    public subscript (sub: Swift.String) -> MessagePackValue {
+        get             { return self[.String(sub)] }
+        set(newValue)   { self[.String(sub)] = newValue }
+    }
+   
+    /// The element at keyed subscript `key` in the `.Map` or `.Array`, `.Nil` otherwise.
+    public subscript (key: MessagePackValue) -> MessagePackValue {
+        get {
+            switch (self, key) {
+            case let (.Map(dict), _):
+                return dict[key] ?? MessagePackValue.Nil
+                
+            case let(.Array(array), .Int(offset)):
+                let i = Swift.Int(offset)
+                return (0..<array.count).contains(i) ? array[i] : .Nil
 
-    /// The element at keyed subscript `key`, `nil` otherwise.
-    public subscript (key: MessagePackValue) -> MessagePackValue? {
-        switch self {
-        case let .Map(dict):
-            return dict[key]
-        default:
-            return nil
+            case let(.Array(array), .UInt(offset)):
+                let i = Swift.Int(offset)
+                return (0..<array.count).contains(i) ? array[i] : .Nil
+
+            default:
+                return .Nil
+            }
+        }
+        set(newValue) {
+            switch (self, newValue) {
+            case let (.Map(value), _):
+                var dict = value
+                dict[key] = newValue
+                
+                self = .Map(dict)
+                
+            case let (.Array(value), .Int(offset)):
+                let i = Swift.Int(offset)
+                
+                if (0...value.count).contains(i) {
+                    var array = value
+                    array[i] = newValue
+                    
+                    self = .Array(array)
+                }
+
+            case let (.Array(value), .UInt(offset)):
+                let i = Swift.Int(offset)
+                
+                if (0...value.count).contains(i) {
+                    var array = value
+                    array[i] = newValue
+                    
+                    self = .Array(array)
+                }
+
+            default:
+                break
+            }
         }
     }
 
