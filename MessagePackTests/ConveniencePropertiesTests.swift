@@ -5,7 +5,7 @@ class ConveniencePropertiesTests: XCTestCase {
     func testCount() {
         XCTAssert(MessagePackValue.Array([0]).count == 1)
         XCTAssert(MessagePackValue.Map(["c": "cookie"]).count == 1)
-        XCTAssert(MessagePackValue.Nil.count == nil)
+        XCTAssert(MessagePackValue.Nil.count == 0)
     }
 
     func testIndexedSubscript() {
