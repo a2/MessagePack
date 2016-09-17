@@ -4,13 +4,13 @@
 /// - parameter size: The size of the integer.
 ///
 /// - returns: An integer representation of `size` bytes of data.
-func unpackInteger<G: GeneratorType where G.Element == Byte>(inout generator: G, size: Int) throws -> UInt64 {
+func unpackInteger<G: IteratorProtocol>(_ generator: inout G, size: Int) throws -> UInt64 where G.Element == Byte {
     var value: UInt64 = 0
     for _ in 0..<size {
         if let byte = generator.next() {
             value = value << 8 | numericCast(byte)
         } else {
-            throw MessagePackError.InsufficientData
+            throw MessagePackError.insufficientData
         }
     }
 
@@ -23,7 +23,7 @@ func unpackInteger<G: GeneratorType where G.Element == Byte>(inout generator: G,
 /// - parameter length: The length of the string.
 ///
 /// - returns: A string representation of `size` bytes of data.
-func unpackString<G: GeneratorType where G.Element == Byte>(inout generator: G, length: Int) throws -> String {
+func unpackString<G: IteratorProtocol>(_ generator: inout G, length: Int) throws -> String where G.Element == Byte {
     var bytes = Data()
     bytes.reserveCapacity(length)
 
@@ -31,14 +31,14 @@ func unpackString<G: GeneratorType where G.Element == Byte>(inout generator: G, 
         if let byte = generator.next() {
             bytes.append(byte)
         } else {
-            throw MessagePackError.InsufficientData
+            throw MessagePackError.insufficientData
         }
     }
 
-    if let result = String(bytes: bytes, encoding: NSUTF8StringEncoding) {
+    if let result = String(bytes: bytes, encoding: String.Encoding.utf8) {
         return result
     } else {
-        throw MessagePackError.InvalidData
+        throw MessagePackError.invalidData
     }
 }
 
@@ -48,7 +48,7 @@ func unpackString<G: GeneratorType where G.Element == Byte>(inout generator: G, 
 /// - parameter length: The length of the data.
 ///
 /// - returns: A subsection of data representing `size` bytes.
-func unpackData<G: GeneratorType where G.Element == Byte>(inout generator: G, length: Int) throws -> Data {
+func unpackData<G: IteratorProtocol>(_ generator: inout G, length: Int) throws -> Data where G.Element == Byte {
     var data = Data()
     data.reserveCapacity(length)
 
@@ -56,7 +56,7 @@ func unpackData<G: GeneratorType where G.Element == Byte>(inout generator: G, le
         if let byte = generator.next() {
             data.append(byte)
         } else {
-            throw MessagePackError.InsufficientData
+            throw MessagePackError.insufficientData
         }
     }
 
@@ -69,7 +69,7 @@ func unpackData<G: GeneratorType where G.Element == Byte>(inout generator: G, le
 /// - parameter count: The number of elements to unpack.
 ///
 /// - returns: An array of `count` elements.
-func unpackArray<G: GeneratorType where G.Element == Byte>(inout generator: G, count: Int, compatibility: Bool) throws -> [MessagePackValue] {
+func unpackArray<G: IteratorProtocol>(_ generator: inout G, count: Int, compatibility: Bool) throws -> [MessagePackValue] where G.Element == Byte {
     var values = [MessagePackValue]()
     values.reserveCapacity(count)
 
@@ -87,7 +87,7 @@ func unpackArray<G: GeneratorType where G.Element == Byte>(inout generator: G, c
 /// - parameter count: The number of elements to unpack.
 ///
 /// - returns: An dictionary of `count` entries.
-func unpackMap<G: GeneratorType where G.Element == Byte>(inout generator: G, count: Int, compatibility: Bool) throws -> [MessagePackValue : MessagePackValue] {
+func unpackMap<G: IteratorProtocol>(_ generator: inout G, count: Int, compatibility: Bool) throws -> [MessagePackValue : MessagePackValue] where G.Element == Byte {
     var dict = [MessagePackValue : MessagePackValue](minimumCapacity: count)
     var lastKey: MessagePackValue? = nil
 
@@ -109,56 +109,56 @@ func unpackMap<G: GeneratorType where G.Element == Byte>(inout generator: G, cou
 /// - parameter generator: The input generator to unpack.
 ///
 /// - returns: A `MessagePackValue`.
-public func unpack<G: GeneratorType where G.Element == Byte>(inout generator: G, compatibility: Bool = false) throws -> MessagePackValue {
+public func unpack<G: IteratorProtocol>(_ generator: inout G, compatibility: Bool = false) throws -> MessagePackValue where G.Element == Byte {
     if let value = generator.next() {
         switch value {
 
         // positive fixint
         case 0x00...0x7f:
-            return .UInt(numericCast(value))
+            return .uInt(numericCast(value))
 
         // fixmap
         case 0x80...0x8f:
             let count = Int(value - 0x80)
             let dict = try unpackMap(&generator, count: count, compatibility: compatibility)
-            return .Map(dict)
+            return .map(dict)
 
         // fixarray
         case 0x90...0x9f:
             let count = Int(value - 0x90)
             let array = try unpackArray(&generator, count: count, compatibility: compatibility)
-            return .Array(array)
+            return .array(array)
 
         // fixstr
         case 0xa0...0xbf:
             let length = Int(value - 0xa0)
             if compatibility {
                 let data = try unpackData(&generator, length: length)
-                return .Binary(data)
+                return .binary(data)
             } else {
                 let string = try unpackString(&generator, length: length)
-                return .String(string)
+                return .string(string)
             }
 
 
         // nil
         case 0xc0:
-            return .Nil
+            return .nil
 
         // false
         case 0xc2:
-            return .Bool(false)
+            return .bool(false)
 
         // true
         case 0xc3:
-            return .Bool(true)
+            return .bool(true)
 
         // bin 8, 16, 32
         case 0xc4...0xc6:
             let size = 1 << numericCast(value - 0xc4)
             let length = try unpackInteger(&generator, size: size)
             let subdata = try unpackData(&generator, length: numericCast(length))
-            return .Binary(subdata)
+            return .binary(subdata)
 
         // ext 8, 16, 32
         case 0xc7...0xc9:
@@ -167,55 +167,55 @@ public func unpack<G: GeneratorType where G.Element == Byte>(inout generator: G,
             if let typeByte = generator.next() {
                 let type = Int8(bitPattern: typeByte)
                 let data = try unpackData(&generator, length: numericCast(length))
-                return .Extended(type, data)
+                return .extended(type, data)
             } else {
-                throw MessagePackError.InsufficientData
+                throw MessagePackError.insufficientData
             }
 
         // float 32
         case 0xca:
             let bytes = try unpackInteger(&generator, size: 4)
-            let float = unsafeBitCast(UInt32(truncatingBitPattern: bytes), Float.self)
-            return .Float(float)
+            let float = unsafeBitCast(UInt32(truncatingBitPattern: bytes), to: Float.self)
+            return .float(float)
 
         // float 64
         case 0xcb:
             let bytes = try unpackInteger(&generator, size: 8)
-            let double = unsafeBitCast(bytes, Double.self)
-            return .Double(double)
+            let double = unsafeBitCast(bytes, to: Double.self)
+            return .double(double)
 
         // uint 8, 16, 32, 64
         case 0xcc...0xcf:
             let size = 1 << (numericCast(value) - 0xcc)
             let integer = try unpackInteger(&generator, size: size)
-            return .UInt(integer)
+            return .uInt(integer)
 
         // int 8
         case 0xd0:
             if let byte = generator.next() {
                 let integer = Int8(bitPattern: byte)
-                return .Int(numericCast(integer))
+                return .int(numericCast(integer))
             } else {
-                throw MessagePackError.InsufficientData
+                throw MessagePackError.insufficientData
             }
 
         // int 16
         case 0xd1:
             let bytes = try unpackInteger(&generator, size: 2)
             let integer = Int16(bitPattern: UInt16(truncatingBitPattern: bytes))
-            return .Int(numericCast(integer))
+            return .int(numericCast(integer))
 
         // int 32
         case 0xd2:
             let bytes = try unpackInteger(&generator, size: 4)
             let integer = Int32(bitPattern: UInt32(truncatingBitPattern: bytes))
-            return .Int(numericCast(integer))
+            return .int(numericCast(integer))
 
         // int 64
         case 0xd3:
             let bytes = try unpackInteger(&generator, size: 8)
             let integer = Int64(bitPattern: bytes)
-            return .Int(integer)
+            return .int(integer)
 
         // fixent 1, 2, 4, 8, 16
         case 0xd4...0xd8:
@@ -223,9 +223,9 @@ public func unpack<G: GeneratorType where G.Element == Byte>(inout generator: G,
             if let typeByte = generator.next() {
                 let type = Int8(bitPattern: typeByte)
                 let bytes = try unpackData(&generator, length: length)
-                return .Extended(type, bytes)
+                return .extended(type, bytes)
             } else {
-                throw MessagePackError.InsufficientData
+                throw MessagePackError.insufficientData
             }
 
         // str 8, 16, 32
@@ -234,10 +234,10 @@ public func unpack<G: GeneratorType where G.Element == Byte>(inout generator: G,
             let length = try unpackInteger(&generator, size: lengthSize)
             if compatibility {
                 let data = try unpackData(&generator, length: numericCast(length))
-                return .Binary(data)
+                return .binary(data)
             } else {
                 let string = try unpackString(&generator, length: numericCast(length))
-                return .String(string)
+                return .string(string)
             }
 
         // array 16, 32
@@ -245,28 +245,28 @@ public func unpack<G: GeneratorType where G.Element == Byte>(inout generator: G,
             let countSize = 1 << Int(value - 0xdb)
             let count = try unpackInteger(&generator, size: countSize)
             let array = try unpackArray(&generator, count: numericCast(count), compatibility: compatibility)
-            return .Array(array)
+            return .array(array)
 
         // map 16, 32
         case 0xde...0xdf:
             let countSize = 1 << Int(value - 0xdd)
             let count = try unpackInteger(&generator, size: countSize)
             let dict = try unpackMap(&generator, count: numericCast(count), compatibility: compatibility)
-            return .Map(dict)
+            return .map(dict)
 
         // negative fixint
         case 0xe0..<0xff:
-            return .Int(numericCast(value) - 0x100)
+            return .int(numericCast(value) - 0x100)
 
         // negative fixint (workaround for rdar://19779978)
         case 0xff:
-            return .Int(numericCast(value) - 0x100)
+            return .int(numericCast(value) - 0x100)
 
         default:
-            throw MessagePackError.InvalidData
+            throw MessagePackError.invalidData
         }
     } else {
-        throw MessagePackError.InsufficientData
+        throw MessagePackError.insufficientData
     }
 }
 
@@ -275,8 +275,8 @@ public func unpack<G: GeneratorType where G.Element == Byte>(inout generator: G,
 /// - parameter data: The data to unpack.
 ///
 /// - returns: The contained `MessagePackValue`.
-public func unpack(data: NSData, compatibility: Bool = false) throws -> MessagePackValue {
-    var generator = NSDataGenerator(data: data)
+public func unpack(_ data: Foundation.Data, compatibility: Bool = false) throws -> MessagePackValue {
+    var generator = NSDataGenerator(data: data as NSData)
     return try unpack(&generator, compatibility: compatibility)
 }
 
@@ -285,7 +285,7 @@ public func unpack(data: NSData, compatibility: Bool = false) throws -> MessageP
 /// - parameter data: The data to unpack.
 ///
 /// - returns: The contained `MessagePackValue`.
-public func unpack(data: dispatch_data_t, compatibility: Bool = false) throws -> MessagePackValue {
+public func unpack(_ data: DispatchData, compatibility: Bool = false) throws -> MessagePackValue {
     var generator = DispatchDataGenerator(data: data)
     return try unpack(&generator, compatibility: compatibility)
 }
@@ -295,7 +295,7 @@ public func unpack(data: dispatch_data_t, compatibility: Bool = false) throws ->
 /// - parameter data: The data to unpack.
 ///
 /// - returns: The contained `MessagePackValue`.
-public func unpack<S: SequenceType where S.Generator.Element == Byte>(data: S, compatibility: Bool = false) throws -> MessagePackValue {
-    var generator = data.generate()
+public func unpack<S: Sequence>(_ data: S, compatibility: Bool = false) throws -> MessagePackValue where S.Iterator.Element == Byte {
+    var generator = data.makeIterator()
     return try unpack(&generator, compatibility: compatibility)
 }

@@ -1,44 +1,36 @@
-struct DispatchDataGenerator: GeneratorType {
-    let data: dispatch_data_t
+struct DispatchDataGenerator: IteratorProtocol {
+    let data: DispatchData
     var i: Int = 0
 
-    var region: dispatch_data_t?
-    var buffer: UnsafePointer<Byte>!
+    var region: DispatchData?
     var offset: Int!
-    var size: Int!
 
-    init(data: dispatch_data_t) {
+    init(data: DispatchData) {
         self.data = data
     }
 
     mutating func next() -> Byte? {
-        if i >= dispatch_data_get_size(data) {
+        if i >= data.count {
             return nil
         }
 
-        if let offset = offset, size = size where i >= offset + size {
+        if let offset = offset, let size = region?.count, i >= offset + size {
             region = nil
         }
 
         if region == nil {
-            var subregionOffset: Int = 0
-            let subregion = dispatch_data_copy_region(data, i, &subregionOffset)
+            let (subregion, subregionOffset) = data.region(location: i)
+            region = subregion
             offset = subregionOffset
-
-            var mapBuffer: UnsafePointer<Void> = nil
-            var mapSize: Int = 0
-            region = dispatch_data_create_map(subregion, &mapBuffer, &mapSize)
-            buffer = UnsafePointer(mapBuffer)
-            size = mapSize
         }
 
-        let ret = buffer[i - offset]
+        let ret = region![i - offset]
         i += 1
         return ret
     }
 }
 
-struct NSDataGenerator: GeneratorType {
+struct NSDataGenerator: IteratorProtocol {
     let data: NSData
     var i: Int = 0
 
@@ -54,21 +46,21 @@ struct NSDataGenerator: GeneratorType {
             return nil
         }
 
-        if let range = range where range ~= i {
+        if let range = range, range ~= i {
             buffer = nil
         }
 
         if buffer == nil {
-            data.enumerateByteRangesUsingBlock { (bytes, byteRange, stop) in
-                if let range = byteRange.toRange() where range ~= self.i {
-                    self.buffer = UnsafePointer(bytes)
+            data.enumerateBytes { (bytes, byteRange, stop) in
+                if let range = byteRange.toRange(), range ~= self.i {
+                    self.buffer = bytes.assumingMemoryBound(to: UInt8.self)
                     self.range = range
-                    stop.memory = true
+                    stop.pointee = true
                 }
             }
         }
 
-        let ret = buffer[i - range.startIndex]
+        let ret = buffer[i - range.lowerBound]
         i += 1
         return ret
     }

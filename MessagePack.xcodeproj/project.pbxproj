@@ -464,9 +464,11 @@
 					};
 					83CEDDA61ABDEBAF00664CC8 = {
 						CreatedOnToolsVersion = 6.3;
+						LastSwiftMigration = 0800;
 					};
 					83CEDDB01ABDEBAF00664CC8 = {
 						CreatedOnToolsVersion = 6.3;
+						LastSwiftMigration = 0800;
 					};
 					83D448881B5C8C4200B0F923 = {
 						CreatedOnToolsVersion = 7.0;
@@ -940,6 +942,7 @@
 				PRODUCT_NAME = MessagePack;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -962,6 +965,7 @@
 				PRODUCT_NAME = MessagePack;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -981,6 +985,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "us.pandamonia.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = MessagePackTests;
 				SDKROOT = macosx;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -997,6 +1002,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "us.pandamonia.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = MessagePackTests;
 				SDKROOT = macosx;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -1053,6 +1059,7 @@
 				1F7A01421C7B020E005F93F9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1F7A01461C7B020E005F93F9 /* Build configuration list for PBXNativeTarget "MessagePackTests-tvOS" */ = {
 			isa = XCConfigurationList;
@@ -1061,6 +1068,7 @@
 				1F7A01441C7B020E005F93F9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8334F1B81B29FE9A00BDE13D /* Build configuration list for PBXNativeTarget "MessagePackTests-iOS" */ = {
 			isa = XCConfigurationList;

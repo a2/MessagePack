@@ -4,9 +4,9 @@
 /// - parameter parts: The number of bytes into which to split.
 ///
 /// - returns: An byte array representation.
-func packInteger(value: UInt64, parts: Int) -> Data {
+func packInteger(_ value: UInt64, parts: Int) -> Data {
     precondition(parts > 0)
-    return (8 * (parts - 1)).stride(through: 0, by: -8).map { shift in
+    return stride(from: (8 * (parts - 1)), through: 0, by: -8).map { shift in
         return Byte(truncatingBitPattern: value >> numericCast(shift))
     }
 }
@@ -16,7 +16,7 @@ func packInteger(value: UInt64, parts: Int) -> Data {
 /// - parameter value: The value to encode
 ///
 /// - returns: A MessagePack byte representation.
-func packPositiveInteger(value: UInt64) -> Data {
+func packPositiveInteger(_ value: UInt64) -> Data {
     switch value {
     case let value where value <= 0x7f:
         return [Byte(truncatingBitPattern: value)]
@@ -36,7 +36,7 @@ func packPositiveInteger(value: UInt64) -> Data {
 /// - parameter value: The value to encode
 ///
 /// - returns: A MessagePack byte representation.
-func packNegativeInteger(value: Int64) -> Data {
+func packNegativeInteger(_ value: Int64) -> Data {
     precondition(value < 0)
 
     switch value {
@@ -61,33 +61,33 @@ func packNegativeInteger(value: Int64) -> Data {
 /// - parameter value: The value to encode
 ///
 /// - returns: A MessagePack byte representation.
-public func pack(value: MessagePackValue) -> Data {
+public func pack(_ value: MessagePackValue) -> Data {
     switch value {
-    case .Nil:
+    case .nil:
         return [0xc0]
 
-    case let .Bool(value):
+    case let .bool(value):
         return [value ? 0xc3 : 0xc2]
 
-    case let .Int(value):
+    case let .int(value):
         if value >= 0 {
             return packPositiveInteger(numericCast(value))
         } else {
             return packNegativeInteger(value)
         }
 
-    case let .UInt(value):
+    case let .uInt(value):
         return packPositiveInteger(value)
 
-    case let .Float(value):
-        let integerValue = unsafeBitCast(value, UInt32.self)
+    case let .float(value):
+        let integerValue = unsafeBitCast(value, to: UInt32.self)
         return [0xca] + packInteger(numericCast(integerValue), parts: 4)
 
-    case let .Double(value):
-        let integerValue = unsafeBitCast(value, UInt64.self)
+    case let .double(value):
+        let integerValue = unsafeBitCast(value, to: UInt64.self)
         return [0xcb] + packInteger(integerValue, parts: 8)
 
-    case let .String(string):
+    case let .string(string):
         let utf8 = string.utf8
         let count = UInt32(utf8.count)
         precondition(count <= 0xffff_ffff)
@@ -106,7 +106,7 @@ public func pack(value: MessagePackValue) -> Data {
 
         return prefix + utf8
 
-    case let .Binary(data):
+    case let .binary(data):
         let count = UInt32(data.count)
         precondition(count <= 0xffff_ffff)
 
@@ -122,7 +122,7 @@ public func pack(value: MessagePackValue) -> Data {
 
         return prefix + data
 
-    case let .Array(array):
+    case let .array(array):
         let count = UInt32(array.count)
         precondition(count <= 0xffff_ffff)
 
@@ -138,7 +138,7 @@ public func pack(value: MessagePackValue) -> Data {
 
         return prefix + array.flatMap(pack)
 
-    case let .Map(dict):
+    case let .map(dict):
         let count = UInt32(dict.count)
         precondition(count < 0xffff_ffff)
 
@@ -154,7 +154,7 @@ public func pack(value: MessagePackValue) -> Data {
 
         return prefix + dict.flatMap { [$0, $1] }.flatMap(pack)
 
-    case let .Extended(type, data):
+    case let .extended(type, data):
         let count = UInt32(data.count)
         precondition(count <= 0xffff_ffff)
 
