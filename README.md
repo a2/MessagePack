@@ -18,6 +18,14 @@ To use CocoaPods, add the following to your Podfile:
 pod 'MessagePack.swift', '~> 2.0.0'
 ```
 
+### Carthage
+
+To use Carthage, add the following to your Cartfile:
+
+```
+github "a2/MPMessagePack.swift" >= 2.0.1
+```
+
 ### SPM (Swift Package Manager)
 
 You can easily integrate MessagePack.swift in your app with SPM. Just add MessagePack.swift as a dependency:
