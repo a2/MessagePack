@@ -27,7 +27,7 @@
 		5424B8FD1DAE7C6000236769 /* MessagePack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagePack.swift; sourceTree = "<group>"; };
 		5424B8FE1DAE7C6000236769 /* Pack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pack.swift; sourceTree = "<group>"; };
 		5424B8FF1DAE7C6000236769 /* Unpack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unpack.swift; sourceTree = "<group>"; };
-		543C068D1DB530A500FC8257 /* MessagePack_macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MessagePack_macOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		543C068D1DB530A500FC8257 /* MessagePack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MessagePack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +60,7 @@
 			isa = PBXGroup;
 			children = (
 				5424B8EF1DAE767200236769 /* MessagePack.framework */,
-				543C068D1DB530A500FC8257 /* MessagePack_macOS.framework */,
+				543C068D1DB530A500FC8257 /* MessagePack.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -102,9 +102,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		5424B8EE1DAE767200236769 /* MessagePack */ = {
+		5424B8EE1DAE767200236769 /* MessagePack iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5424B8F71DAE767200236769 /* Build configuration list for PBXNativeTarget "MessagePack" */;
+			buildConfigurationList = 5424B8F71DAE767200236769 /* Build configuration list for PBXNativeTarget "MessagePack iOS" */;
 			buildPhases = (
 				5424B8EA1DAE767200236769 /* Sources */,
 				5424B8EB1DAE767200236769 /* Frameworks */,
@@ -115,14 +115,14 @@
 			);
 			dependencies = (
 			);
-			name = MessagePack;
+			name = "MessagePack iOS";
 			productName = MessagePack;
 			productReference = 5424B8EF1DAE767200236769 /* MessagePack.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		543C068C1DB530A500FC8257 /* MessagePack_macOS */ = {
+		543C068C1DB530A500FC8257 /* MessagePack macOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 543C06941DB530A500FC8257 /* Build configuration list for PBXNativeTarget "MessagePack_macOS" */;
+			buildConfigurationList = 543C06941DB530A500FC8257 /* Build configuration list for PBXNativeTarget "MessagePack macOS" */;
 			buildPhases = (
 				543C06881DB530A500FC8257 /* Sources */,
 				543C06891DB530A500FC8257 /* Frameworks */,
@@ -133,9 +133,9 @@
 			);
 			dependencies = (
 			);
-			name = MessagePack_macOS;
+			name = "MessagePack macOS";
 			productName = MessagePack_macOS;
-			productReference = 543C068D1DB530A500FC8257 /* MessagePack_macOS.framework */;
+			productReference = 543C068D1DB530A500FC8257 /* MessagePack.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -169,8 +169,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5424B8EE1DAE767200236769 /* MessagePack */,
-				543C068C1DB530A500FC8257 /* MessagePack_macOS */,
+				5424B8EE1DAE767200236769 /* MessagePack iOS */,
+				543C068C1DB530A500FC8257 /* MessagePack macOS */,
 			);
 		};
 /* End PBXProject section */
@@ -328,7 +328,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.a2.MessagePack;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = MessagePack;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -348,7 +348,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.a2.MessagePack;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = MessagePack;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 			};
@@ -369,7 +369,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.a2.MessagePack-macOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = MessagePack;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
@@ -391,7 +391,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.a2.MessagePack-macOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = MessagePack;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
@@ -410,7 +410,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5424B8F71DAE767200236769 /* Build configuration list for PBXNativeTarget "MessagePack" */ = {
+		5424B8F71DAE767200236769 /* Build configuration list for PBXNativeTarget "MessagePack iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5424B8F81DAE767200236769 /* Debug */,
@@ -419,7 +419,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		543C06941DB530A500FC8257 /* Build configuration list for PBXNativeTarget "MessagePack_macOS" */ = {
+		543C06941DB530A500FC8257 /* Build configuration list for PBXNativeTarget "MessagePack macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				543C06921DB530A500FC8257 /* Debug */,

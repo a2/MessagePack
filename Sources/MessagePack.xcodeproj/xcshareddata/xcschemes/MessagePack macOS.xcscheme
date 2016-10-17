@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "543C068C1DB530A500FC8257"
-               BuildableName = "MessagePack.framework"
-               BlueprintName = "MessagePack_macOS"
+               BuildableName = "MessagePack macOS.framework"
+               BlueprintName = "MessagePack macOS"
                ReferencedContainer = "container:MessagePack.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -46,8 +46,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "543C068C1DB530A500FC8257"
-            BuildableName = "MessagePack.framework"
-            BlueprintName = "MessagePack_macOS"
+            BuildableName = "MessagePack macOS.framework"
+            BlueprintName = "MessagePack macOS"
             ReferencedContainer = "container:MessagePack.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -64,8 +64,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "543C068C1DB530A500FC8257"
-            BuildableName = "MessagePack.framework"
-            BlueprintName = "MessagePack_macOS"
+            BuildableName = "MessagePack macOS.framework"
+            BlueprintName = "MessagePack macOS"
             ReferencedContainer = "container:MessagePack.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
