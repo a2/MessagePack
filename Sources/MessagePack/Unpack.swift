@@ -1,25 +1,36 @@
 
 import Foundation
 
+
+/// Handle the remaining data without duplicating
 final class RemainderData {
   let data:Data
   private let bytes:UnsafePointer<UInt8>
   private let rawBytes:UnsafeRawPointer
+  
+  /// Current location of where we are processing
   private var offset:Int = 0 {
     didSet {
       isEmpty = offset >= data.endIndex
     }
   }
+  
+  /// Initialize with the original data source
+  ///
+  /// - Parameter data: The data to be unpacked
   init(_ data:Data) {
     self.data = data
-    rawBytes = (self.data as! NSData).bytes
+    rawBytes = (self.data as NSData).bytes
     bytes = rawBytes.assumingMemoryBound(to: UInt8.self)
     isEmpty = data.isEmpty
   }
   
   
+  /// Determine if we are out of data
   private (set) var isEmpty: Bool
   
+  
+  /// The first byte at the offset
   var first: UInt8? {
     guard !isEmpty else {
       return nil
@@ -28,20 +39,37 @@ final class RemainderData {
     return data[offset]
   }
   
+  
+  /// Total number of bytes left
   var count: Int {
     return data.endIndex - offset
   }
   
+  
+  /// Advance the location of our remaining data
+  ///
+  /// - Parameter size: Number of bytes to advance
   func inc(_ size:Int) {
     offset += size
   }
   
+  
+  /// Return the first byte and advance remainder
+  ///
+  /// - Returns: The first byte at offset
   func popOne() -> UInt8 {
     let v = bytes[offset]
     offset += 1
     return v
   }
   
+  
+  /// Pop a types object off the data
+  ///
+  /// - Parameters:
+  ///   - type: Type of data to return
+  ///   - inc: Number of bytes to advance our remainder data
+  /// - Returns: The object that was popped
   func pop<T>(_ type: T.Type, inc:Int) -> T {
     let v:T = rawBytes.load(fromByteOffset: offset, as: T.self)
     
@@ -49,30 +77,26 @@ final class RemainderData {
     return v
   }
   
+  
+  /// Pop back a data object
+  ///
+  /// - Parameter size: Size of the data object to return
+  /// - Returns: A data object with the same backing as the original
   func popData(first size:Int) -> Data {
-    let value = data.subdata(in: offset..<(offset+size))
+    var mutableRaw = UnsafeMutableRawPointer(mutating: rawBytes)
+    mutableRaw = mutableRaw.advanced(by: offset)
+    let value = Data.init(bytesNoCopy: mutableRaw, count: size, deallocator:.none)
     offset += size
     return value
   }
   
+  
+  /// Return the remaining data as a new data object
+  ///
+  /// - Returns: Remaining Data
   func popRemaining() -> Data {
     return popData(first: count)
   }
-  
-  //  func process<T>(first times:Int, with window:(_ rootData:Data, _ offset:Int)-> T) {
-  //    guard times > 0 else {
-  //      return nil
-  //    }
-  //
-  //    guard times <= count else {
-  //      return nil
-  //    }
-  //
-  //    let values = data[offset..<(offset + times)]
-  //    offset += times
-  //    return nil
-  //  }
-  //  var dropFirst
 }
 
 
@@ -92,7 +116,7 @@ func unpackInteger(_ data: RemainderData, count: Int) throws -> (value: UInt64, 
     }
 
     var value: UInt64 = 0
-    for i in 0 ..< count {
+    for _ in 0 ..< count {
     let byte = data.popOne()
         value = value << 8 | UInt64(byte)
     }
