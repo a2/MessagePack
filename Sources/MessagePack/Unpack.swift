@@ -3,11 +3,8 @@ import Foundation
 
 
 /// Handle the remaining data without duplicating
-final class RemainderData {
+public final class RemainderData {
   let data:Data
-  private let bytes:UnsafePointer<UInt8>
-  private let rawBytes:UnsafeRawPointer
-  
   /// Current location of where we are processing
   private var offset:Int = 0 {
     didSet {
@@ -20,8 +17,6 @@ final class RemainderData {
   /// - Parameter data: The data to be unpacked
   init(_ data:Data) {
     self.data = data
-    rawBytes = (self.data as NSData).bytes
-    bytes = rawBytes.assumingMemoryBound(to: UInt8.self)
     isEmpty = data.isEmpty
   }
   
@@ -58,7 +53,7 @@ final class RemainderData {
   ///
   /// - Returns: The first byte at offset
   func popOne() -> UInt8 {
-    let v = bytes[offset]
+    let v = data[offset]
     offset += 1
     return v
   }
@@ -71,31 +66,24 @@ final class RemainderData {
   ///   - inc: Number of bytes to advance our remainder data
   /// - Returns: The object that was popped
   func pop<T>(_ type: T.Type, inc:Int) -> T {
-    let v:T = rawBytes.load(fromByteOffset: offset, as: T.self)
+    let v:T = data.withUnsafeBytes { (rawDataBytes:UnsafePointer<UInt8>) -> T in
+        let unsafePointer = UnsafeRawPointer(rawDataBytes)
+        return unsafePointer.load(fromByteOffset: offset, as: T.self) as T
+    }
     
     offset += inc
     return v
   }
   
   
-  /// Pop back a data object
+  /// Pop back a data object with copied Memory
   ///
   /// - Parameter size: Size of the data object to return
   /// - Returns: A data object with the same backing as the original
   func popData(first size:Int) -> Data {
-    var mutableRaw = UnsafeMutableRawPointer(mutating: rawBytes)
-    mutableRaw = mutableRaw.advanced(by: offset)
-    let value = Data.init(bytesNoCopy: mutableRaw, count: size, deallocator:.none)
+    let subdata = data.subdata(in: offset..<(offset+size))
     offset += size
-    return value
-  }
-  
-  
-  /// Return the remaining data as a new data object
-  ///
-  /// - Returns: Remaining Data
-  func popRemaining() -> Data {
-    return popData(first: count)
+    return subdata
   }
 }
 
@@ -140,7 +128,7 @@ func unpackString(_ data: RemainderData, count: Int) throws -> (value: String, r
     }
 
 
-  let subdata = data.popData(first: count)
+    let subdata = data.popData(first: count)
     guard let result = String(data: subdata, encoding: .utf8) else {
         throw MessagePackError.invalidData
     }
@@ -212,9 +200,9 @@ func unpackMap(_ data: RemainderData, count: Int, compatibility: Bool) throws ->
 /// - parameter data: The input data to unpack.
 ///
 /// - returns: A `MessagePackValue`.
-public func unpack(_ data: Data, compatibility: Bool = false) throws -> (value: MessagePackValue, remainder: Data) {
+public func unpack(_ data: Data, compatibility: Bool = false) throws -> (value: MessagePackValue, remainder: RemainderData) {
   let (value, remainder) = try unpack(RemainderData(data), compatibility: compatibility)
-  return (value, remainder.popRemaining())
+  return (value, remainder)
 }
 
 
@@ -389,7 +377,7 @@ func unpack(_ data: RemainderData, compatibility: Bool = false) throws -> (value
 ///
 /// - returns: The contained `MessagePackValue`.
 public func unpackFirst(_ data: Data, compatibility: Bool = false) throws -> MessagePackValue {
-    return try unpack(data, compatibility: compatibility).value
+    return try unpack(RemainderData(data), compatibility: compatibility).value
 }
 
 /// Unpacks a data object into an array of `MessagePackValue` values.
@@ -397,10 +385,10 @@ public func unpackFirst(_ data: Data, compatibility: Bool = false) throws -> Mes
 /// - parameter data: The data to unpack.
 ///
 /// - returns: The contained `MessagePackValue` values.
-public func unpackAll(_ data: Data, compatibility: Bool = false) throws -> [MessagePackValue] {
+public func unpackAll(_ originalData: Data, compatibility: Bool = false) throws -> [MessagePackValue] {
     var values = [MessagePackValue]()
 
-    var data = data
+    var data = RemainderData(originalData)
     while !data.isEmpty {
         let value: MessagePackValue
         (value, data) = try unpack(data, compatibility: compatibility)
