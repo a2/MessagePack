@@ -174,5 +174,8 @@ public func pack(_ value: MessagePackValue) -> Data {
         }
 
         return prefix + data
+        
+    case .raw(let data):
+        return data
     }
 }
