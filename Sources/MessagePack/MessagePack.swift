@@ -13,6 +13,7 @@ public enum MessagePackValue {
     case array([MessagePackValue])
     case map([MessagePackValue: MessagePackValue])
     case extended(Int8, Data)
+    case raw(Data)
 }
 
 extension MessagePackValue: CustomStringConvertible {
@@ -40,6 +41,8 @@ extension MessagePackValue: CustomStringConvertible {
             return "map(\(dict.description))"
         case .extended(let type, let data):
             return "extended(\(type), \(data))"
+        case .raw(let data):
+            return "raw(\(data))"
         }
     }
 }
@@ -73,6 +76,8 @@ extension MessagePackValue: Equatable {
             return lhv == rhv
         case (.extended(let lht, let lhb), .extended(let rht, let rhb)):
             return lht == rht && lhb == rhb
+        case (.raw(let lhv), .raw(let rhv)):
+            return lhv == rhv
         default:
             return false
         }
@@ -93,6 +98,7 @@ extension MessagePackValue: Hashable {
         case .array(let array): return array.count
         case .map(let dict): return dict.count
         case .extended(let type, let data): return 31 &* type.hashValue &+ data.count
+        case .raw(let data): return data.count
         }
     }
 }

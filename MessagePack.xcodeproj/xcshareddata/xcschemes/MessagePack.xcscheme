@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_50"
+               BlueprintIdentifier = "OBJ_51"
                BuildableName = "MessagePackTests.xctest"
                BlueprintName = "MessagePackTests"
                ReferencedContainer = "container:MessagePack.xcodeproj">
