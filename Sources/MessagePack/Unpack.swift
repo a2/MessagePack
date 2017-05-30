@@ -1,4 +1,92 @@
+
 import Foundation
+
+
+/// Handle the remaining data without duplicating
+public final class RemainderData {
+  let data:Data
+  /// Current location of where we are processing
+  private var offset:Int = 0 {
+    didSet {
+      isEmpty = offset >= data.endIndex
+    }
+  }
+  
+  /// Initialize with the original data source
+  ///
+  /// - Parameter data: The data to be unpacked
+  init(_ data:Data) {
+    self.data = data
+    isEmpty = data.isEmpty
+  }
+  
+  
+  /// Determine if we are out of data
+  public private (set) var isEmpty: Bool
+  
+  
+  /// The first byte at the offset
+  var first: UInt8? {
+    guard !isEmpty else {
+      return nil
+    }
+    
+    return data[offset]
+  }
+  
+  
+  /// Total number of bytes left
+  var count: Int {
+    return data.endIndex - offset
+  }
+  
+  
+  /// Advance the location of our remaining data
+  ///
+  /// - Parameter size: Number of bytes to advance
+  func inc(_ size:Int) {
+    offset += size
+  }
+  
+  
+  /// Return the first byte and advance remainder
+  ///
+  /// - Returns: The first byte at offset
+  func popOne() -> UInt8 {
+    let v = data[offset]
+    offset += 1
+    return v
+  }
+  
+  
+  /// Pop a types object off the data
+  ///
+  /// - Parameters:
+  ///   - type: Type of data to return
+  ///   - inc: Number of bytes to advance our remainder data
+  /// - Returns: The object that was popped
+  func pop<T>(_ type: T.Type, inc:Int) -> T {
+    let v:T = data.withUnsafeBytes { (rawDataBytes:UnsafePointer<UInt8>) -> T in
+        let unsafePointer = UnsafeRawPointer(rawDataBytes)
+        return unsafePointer.load(fromByteOffset: offset, as: T.self) as T
+    }
+    
+    offset += inc
+    return v
+  }
+  
+  
+  /// Pop back a data object with copied Memory
+  ///
+  /// - Parameter size: Size of the data object to return
+  /// - Returns: A data object with the same backing as the original
+  func popData(first size:Int) -> Data {
+    let subdata = data.subdata(in: offset..<(offset+size))
+    offset += size
+    return subdata
+  }
+}
+
 
 /// Joins bytes to form an integer.
 ///
@@ -6,7 +94,7 @@ import Foundation
 /// - parameter size: The size of the integer.
 ///
 /// - returns: An integer representation of `size` bytes of data.
-func unpackInteger(_ data: Data, count: Int) throws -> (value: UInt64, remainder: Data) {
+func unpackInteger(_ data: RemainderData, count: Int) throws -> (value: UInt64, remainder: RemainderData) {
     guard count > 0 else {
         throw MessagePackError.invalidArgument
     }
@@ -16,12 +104,12 @@ func unpackInteger(_ data: Data, count: Int) throws -> (value: UInt64, remainder
     }
 
     var value: UInt64 = 0
-    for i in 0 ..< count {
-        let byte = data[i]
+    for _ in 0 ..< count {
+    let byte = data.popOne()
         value = value << 8 | UInt64(byte)
     }
 
-    return (value, data.subdata(in: count ..< data.count))
+  return (value, data)
 }
 
 /// Joins bytes to form a string.
@@ -30,7 +118,7 @@ func unpackInteger(_ data: Data, count: Int) throws -> (value: UInt64, remainder
 /// - parameter length: The length of the string.
 ///
 /// - returns: A string representation of `size` bytes of data.
-func unpackString(_ data: Data, count: Int) throws -> (value: String, remainder: Data) {
+func unpackString(_ data: RemainderData, count: Int) throws -> (value: String, remainder: RemainderData) {
     guard count > 0 else {
         return ("", data)
     }
@@ -40,12 +128,12 @@ func unpackString(_ data: Data, count: Int) throws -> (value: String, remainder:
     }
 
 
-    let subdata = data.subdata(in: 0 ..< count)
+    let subdata = data.popData(first: count)
     guard let result = String(data: subdata, encoding: .utf8) else {
         throw MessagePackError.invalidData
     }
 
-    return (result, data.subdata(in: count ..< data.count))
+  return (result, data)
 }
 
 /// Joins bytes to form a data object.
@@ -54,7 +142,7 @@ func unpackString(_ data: Data, count: Int) throws -> (value: String, remainder:
 /// - parameter length: The length of the data.
 ///
 /// - returns: A subsection of data representing `size` bytes.
-func unpackData(_ data: Data, count: Int) throws -> (value: Data, remainder: Data) {
+func unpackData(_ data: RemainderData, count: Int) throws -> (value: Data, remainder: RemainderData) {
     guard count > 0 else {
         throw MessagePackError.invalidArgument
     }
@@ -62,8 +150,8 @@ func unpackData(_ data: Data, count: Int) throws -> (value: Data, remainder: Dat
     guard data.count >= count else {
         throw MessagePackError.insufficientData
     }
-
-    return (data.subdata(in: 0 ..< count), data.subdata(in: count ..< data.count))
+  let subData = data.popData(first: count)
+  return (subData, data)
 }
 
 /// Joins bytes to form an array of `MessagePackValue` values.
@@ -72,11 +160,10 @@ func unpackData(_ data: Data, count: Int) throws -> (value: Data, remainder: Dat
 /// - parameter count: The number of elements to unpack.
 ///
 /// - returns: An array of `count` elements.
-func unpackArray(_ data: Data, count: Int, compatibility: Bool) throws -> (value: [MessagePackValue], remainder: Data) {
-    var values = [MessagePackValue]()
-    var remainder = data
+func unpackArray(_ data: RemainderData, count: Int, compatibility: Bool) throws -> (value: [MessagePackValue], remainder: RemainderData) {
+  var values = [MessagePackValue]()
     var newValue: MessagePackValue
-
+  var remainder:RemainderData = data
     for _ in 0 ..< count {
         (newValue, remainder) = try unpack(remainder, compatibility: compatibility)
         values.append(newValue)
@@ -91,7 +178,7 @@ func unpackArray(_ data: Data, count: Int, compatibility: Bool) throws -> (value
 /// - parameter count: The number of elements to unpack.
 ///
 /// - returns: An dictionary of `count` entries.
-func unpackMap(_ data: Data, count: Int, compatibility: Bool) throws -> (value: [MessagePackValue: MessagePackValue], remainder: Data) {
+func unpackMap(_ data: RemainderData, count: Int, compatibility: Bool) throws -> (value: [MessagePackValue: MessagePackValue], remainder: RemainderData) {
     var dict = [MessagePackValue: MessagePackValue](minimumCapacity: count)
     var lastKey: MessagePackValue? = nil
 
@@ -113,13 +200,19 @@ func unpackMap(_ data: Data, count: Int, compatibility: Bool) throws -> (value: 
 /// - parameter data: The input data to unpack.
 ///
 /// - returns: A `MessagePackValue`.
-public func unpack(_ data: Data, compatibility: Bool = false) throws -> (value: MessagePackValue, remainder: Data) {
+public func unpack(_ data: Data, compatibility: Bool = false) throws -> (value: MessagePackValue, remainder: RemainderData) {
+  let (value, remainder) = try unpack(RemainderData(data), compatibility: compatibility)
+  return (value, remainder)
+}
+
+
+
+public func unpack(_ data: RemainderData, compatibility: Bool = false) throws -> (value: MessagePackValue, remainder: RemainderData) {
     guard !data.isEmpty else {
         throw MessagePackError.insufficientData
     }
 
-    let value = data.first!
-    let data = data.subdata(in: 1 ..< data.endIndex)
+  let value = data.popOne()
 
     switch value {
 
@@ -178,8 +271,8 @@ public func unpack(_ data: Data, compatibility: Bool = false) throws -> (value: 
             throw MessagePackError.insufficientData
         }
 
-        let type = Int8(bitPattern: remainder1[0])
-        let (data, remainder2) = try unpackData(remainder1.subdata(in: 1 ..< remainder1.count), count: Int(dataCount))
+    let type = Int8(bitPattern: remainder1.popOne())
+    let (data, remainder2) = try unpackData(remainder1, count: Int(dataCount))
         return (.extended(type, data), remainder2)
 
     // float 32
@@ -206,8 +299,8 @@ public func unpack(_ data: Data, compatibility: Bool = false) throws -> (value: 
             throw MessagePackError.insufficientData
         }
 
-        let byte = Int8(bitPattern: data[0])
-        return (.int(Int64(byte)), data.subdata(in: 1 ..< data.count))
+    let byte = Int8(bitPattern: data.popOne())
+    return (.int(Int64(byte)), data)
 
     // int 16
     case 0xd1:
@@ -235,8 +328,8 @@ public func unpack(_ data: Data, compatibility: Bool = false) throws -> (value: 
             throw MessagePackError.insufficientData
         }
 
-        let type = Int8(bitPattern: data[0])
-        let (bytes, remainder) = try unpackData(data.subdata(in: 1 ..< data.count), count: count)
+    let type = Int8(bitPattern: data.popOne())
+    let (bytes, remainder) = try unpackData(data, count: count)
         return (.extended(type, bytes), remainder)
 
     // str 8, 16, 32
@@ -284,7 +377,7 @@ public func unpack(_ data: Data, compatibility: Bool = false) throws -> (value: 
 ///
 /// - returns: The contained `MessagePackValue`.
 public func unpackFirst(_ data: Data, compatibility: Bool = false) throws -> MessagePackValue {
-    return try unpack(data, compatibility: compatibility).value
+    return try unpack(RemainderData(data), compatibility: compatibility).value
 }
 
 /// Unpacks a data object into an array of `MessagePackValue` values.
@@ -292,10 +385,10 @@ public func unpackFirst(_ data: Data, compatibility: Bool = false) throws -> Mes
 /// - parameter data: The data to unpack.
 ///
 /// - returns: The contained `MessagePackValue` values.
-public func unpackAll(_ data: Data, compatibility: Bool = false) throws -> [MessagePackValue] {
+public func unpackAll(_ originalData: Data, compatibility: Bool = false) throws -> [MessagePackValue] {
     var values = [MessagePackValue]()
 
-    var data = data
+    var data = RemainderData(originalData)
     while !data.isEmpty {
         let value: MessagePackValue
         (value, data) = try unpack(data, compatibility: compatibility)
