@@ -22,7 +22,7 @@ public final class RemainderData {
   
   
   /// Determine if we are out of data
-  private (set) var isEmpty: Bool
+  public private (set) var isEmpty: Bool
   
   
   /// The first byte at the offset
@@ -207,7 +207,7 @@ public func unpack(_ data: Data, compatibility: Bool = false) throws -> (value: 
 
 
 
-func unpack(_ data: RemainderData, compatibility: Bool = false) throws -> (value: MessagePackValue, remainder: RemainderData) {
+public func unpack(_ data: RemainderData, compatibility: Bool = false) throws -> (value: MessagePackValue, remainder: RemainderData) {
     guard !data.isEmpty else {
         throw MessagePackError.insufficientData
     }
