@@ -110,7 +110,7 @@ class MessagePackEncoderTests : XCTestCase {
         let encoder = MessagePackEncoder()
         do {
             let _ = try encoder.encode(NestedContainersTestType())
-        } catch let error as NSError {
+        } catch {
             XCTAssert(false, "Caught error during encoding nested container types: \(error)")
         }
     }
@@ -119,7 +119,7 @@ class MessagePackEncoderTests : XCTestCase {
         let encoder = MessagePackEncoder()
         do {
             let _ = try encoder.encode(NestedContainersTestType(testSuperEncoder: true))
-        } catch let error as NSError {
+        } catch {
             XCTAssert(false, "Caught error during encoding nested container types: \(error)")
         }
     }
