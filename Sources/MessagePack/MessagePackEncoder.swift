@@ -29,15 +29,23 @@ open class MessagePackEncoder {
     public init() {}
     
     open func encode<T : Encodable>(_ value: T) throws -> Data {
+        let messagePack = try self.messagePack(with: value)
+        return try encode(messagePack: messagePack)
+    }
+    
+    open func encode(messagePack: MessagePackValue) throws -> Data {
+        return pack(messagePack)
+    }
+    
+    open func messagePack<T: Encodable>(with value: T) throws -> MessagePackValue {
         
         let encoder = _MessagePackEncoder(options: options)
         
-        guard let topLevel = try encoder.box_(value) else {
+        guard let box = try encoder.box_(value) else {
             throw EncodingError.invalidValue(value, EncodingError.Context(codingPath: [], debugDescription: "Top-level \(T.self) did not encode any values."))
         }
         
-        let data = pack(topLevel.messagePackValue)
-        return data
+        return box.messagePackValue
     }
 }
 
@@ -469,21 +477,31 @@ open class MessagePackDecoder {
     public init() {}
     
     open func decode<T : Decodable>(_ type: T.Type, from data: Data) throws -> T {
+        let messagePack = try self.messagePack(with: data)
+        return try decode(type, from: messagePack)
+    }
+    
+    open func decode<T: Decodable>(_ type: T.Type, from messagePack: MessagePackValue) throws -> T {
         
-        let topLevel: MessagePackValue
-        do {
-            topLevel = try unpackFirst(data)
-        } catch {
-            throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: [], debugDescription: "The given data was not valid Message Pack.", underlyingError: error))
-        }
+        let decoder = _MessagePackDecoder(referencing: messagePack, options: options)
         
-        let decoder = _MessagePackDecoder(referencing: topLevel, options: options)
-        
-        guard let value = try decoder.unbox(topLevel, as: T.self) else {
+        guard let value = try decoder.unbox(messagePack, as: T.self) else {
             throw DecodingError.valueNotFound(T.self, DecodingError.Context(codingPath: [], debugDescription: "The given data did not contain a top-level value."))
         }
         
         return value
+    }
+    
+    open func messagePack(with data: Data) throws -> MessagePackValue {
+        
+        let messagePack: MessagePackValue
+        do {
+            messagePack = try unpackFirst(data)
+        } catch {
+            throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: [], debugDescription: "The given data was not valid Message Pack.", underlyingError: error))
+        }
+        
+        return messagePack
     }
 }
 

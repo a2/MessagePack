@@ -13,12 +13,12 @@ class MessagePackEncoderTests : XCTestCase {
     // MARK: - Encoding Top-Level Empty Types
     func testEncodingTopLevelEmptyStruct() {
         let empty = EmptyStruct()
-        _testRoundTrip(of: empty, expectedMessagePack: _messagePackEmptyDictionary)
+        _testRoundTrip(of: empty, expectedData: _messagePackEmptyDictionary)
     }
     
     func testEncodingTopLevelEmptyClass() {
         let empty = EmptyClass()
-        _testRoundTrip(of: empty, expectedMessagePack: _messagePackEmptyDictionary)
+        _testRoundTrip(of: empty, expectedData: _messagePackEmptyDictionary)
     }
     
     // MARK: - Encoding Top-Level Single-Value Types
@@ -129,24 +129,68 @@ class MessagePackEncoderTests : XCTestCase {
         return Data([0x80])
     }
     
-    private func _testRoundTrip<T>(of value: T,
-                                   expectedMessagePack messagePack: Data? = nil) where T : Codable, T : Equatable {
+    private func _testRoundTrip<T>(of value: T, expectedData data: Data? = nil) where T : Codable, T : Equatable {
+        _testSingleStepRoundTrip(of: value, expectedData: data)
+        _testMultiStepRoundTrip(of: value, expectedData: data)
+    }
+    
+    private func _testSingleStepRoundTrip<T>(of value: T, expectedData data: Data? = nil) where T : Codable, T : Equatable {
+        
         var payload: Data! = nil
         do {
             let encoder = MessagePackEncoder()
             payload = try encoder.encode(value)
         } catch {
-            XCTAssert(false, "Failed to encode \(T.self) to MessagePack: \(error)")
+            XCTAssert(false, "Failed to encode \(T.self) to data: \(error)")
         }
         
-        if let expectedMessagePack = messagePack {
-            XCTAssertEqual(expectedMessagePack, payload, "Produced MessagePack not identical to expected MessagePack.")
+        if let expectedData = data {
+            XCTAssertEqual(expectedData, payload, "Produced data not identical to expected data.")
         }
         
         do {
             let decoder = MessagePackDecoder()
             let decoded = try decoder.decode(T.self, from: payload)
             XCTAssertEqual(decoded, value, "\(T.self) did not round-trip to an equal value.")
+        } catch {
+            XCTAssert(false, "Failed to decode \(T.self) from data: \(error)")
+        }
+    }
+    
+    private func _testMultiStepRoundTrip<T>(of value: T, expectedData data: Data? = nil) where T : Codable, T : Equatable {
+
+        let encoder = MessagePackEncoder()
+        let decoder = MessagePackDecoder()
+        
+        var messagePack: MessagePackValue! = nil
+        do {
+            messagePack = try encoder.messagePack(with: value)
+        } catch {
+            XCTAssert(false, "Failed to encode \(T.self) to MessagePack: \(error)")
+        }
+        
+        var payload: Data! = nil
+        do {
+            payload = try encoder.encode(messagePack: messagePack)
+        } catch {
+            XCTAssert(false, "Failed to encode \(T.self) to data: \(error)")
+        }
+        
+        if let expectedData = data {
+            XCTAssertEqual(expectedData, payload, "Produced data not identical to expected data.")
+        }
+        
+        var decodedMessagePack: MessagePackValue = nil
+        do {
+            decodedMessagePack = try decoder.messagePack(with: payload)
+            XCTAssertEqual(decodedMessagePack, messagePack, "Conversion from Data to MessagePack did not round-trip to an equal value.")
+        } catch {
+            XCTAssert(false, "Failed to decode MessagePack from data: \(error)")
+        }
+        
+        do {
+            let decoded = try decoder.decode(T.self, from: decodedMessagePack)
+            XCTAssertEqual(decoded, value, "Conversion from MessagePack to \(T.self) did not round-trip to an equal value.")
         } catch {
             XCTAssert(false, "Failed to decode \(T.self) from MessagePack: \(error)")
         }
@@ -640,4 +684,3 @@ fileprivate struct OptionalTopLevelWrapper<T> : Codable, Equatable where T : Cod
         return lhs.value == rhs.value
     }
 }
-
