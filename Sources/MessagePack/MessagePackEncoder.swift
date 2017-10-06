@@ -464,14 +464,27 @@ fileprivate class _MessagePackReferencingEncoder : _MessagePackEncoder {
 // MARK: - Message Pack Decoder
 open class MessagePackDecoder {
     
+    public enum NumberDecodingStrategy {
+        
+        /// Follows type of model strictly
+        case noTypeConversion
+        
+        /// Automatically convert between UInt64, Int64, Double, Float
+        case automaticTypeConversion
+    }
+    
+    open var numberDecodingStrategy: NumberDecodingStrategy = .noTypeConversion
+    
     open var userInfo: [CodingUserInfoKey : Any] = [:]
     
     fileprivate struct _Options {
+        let numberDecodingStrategy: NumberDecodingStrategy
         let userInfo: [CodingUserInfoKey : Any]
     }
     
     fileprivate var options: _Options {
-        return _Options(userInfo: userInfo)
+        return _Options(numberDecodingStrategy: numberDecodingStrategy,
+                        userInfo: userInfo)
     }
     
     public init() {}
@@ -1321,51 +1334,87 @@ extension _MessagePackDecoder {
     }
     
     fileprivate func unbox(_ value: MessagePackValue, as type: Int.Type) throws -> Int? {
-        return value.integerValue.map { Int($0) }
+        switch options.numberDecodingStrategy {
+        case .noTypeConversion:         return value.integerValue.map { Int($0) }
+        case .automaticTypeConversion:  return value.numberValue?.intValue
+        }
     }
     
     fileprivate func unbox(_ value: MessagePackValue, as type: Int8.Type) throws -> Int8? {
-        return value.integerValue.map { Int8($0) }
+        switch options.numberDecodingStrategy {
+        case .noTypeConversion:         return value.integerValue.map { Int8($0) }
+        case .automaticTypeConversion:  return value.numberValue?.int8Value
+        }
     }
     
     fileprivate func unbox(_ value: MessagePackValue, as type: Int16.Type) throws -> Int16? {
-        return value.integerValue.map { Int16($0) }
+        switch options.numberDecodingStrategy {
+        case .noTypeConversion:         return value.integerValue.map { Int16($0) }
+        case .automaticTypeConversion:  return value.numberValue?.int16Value
+        }
     }
     
     fileprivate func unbox(_ value: MessagePackValue, as type: Int32.Type) throws -> Int32? {
-        return value.integerValue.map { Int32($0) }
+        switch options.numberDecodingStrategy {
+        case .noTypeConversion:         return value.integerValue.map { Int32($0) }
+        case .automaticTypeConversion:  return value.numberValue?.int32Value
+        }
     }
     
     fileprivate func unbox(_ value: MessagePackValue, as type: Int64.Type) throws -> Int64? {
-        return value.integerValue.map { Int64($0) }
+        switch options.numberDecodingStrategy {
+        case .noTypeConversion:         return value.integerValue.map { Int64($0) }
+        case .automaticTypeConversion:  return value.numberValue?.int64Value
+        }
     }
     
     fileprivate func unbox(_ value: MessagePackValue, as type: UInt.Type) throws -> UInt? {
-        return value.unsignedIntegerValue.map { UInt($0) }
+        switch options.numberDecodingStrategy {
+        case .noTypeConversion:         return value.unsignedIntegerValue.map { UInt($0) }
+        case .automaticTypeConversion:  return value.numberValue?.uintValue
+        }
     }
     
     fileprivate func unbox(_ value: MessagePackValue, as type: UInt8.Type) throws -> UInt8? {
-        return value.unsignedIntegerValue.map { UInt8($0) }
+        switch options.numberDecodingStrategy {
+        case .noTypeConversion:         return value.unsignedIntegerValue.map { UInt8($0) }
+        case .automaticTypeConversion:  return value.numberValue?.uint8Value
+        }
     }
     
     fileprivate func unbox(_ value: MessagePackValue, as type: UInt16.Type) throws -> UInt16? {
-        return value.unsignedIntegerValue.map { UInt16($0) }
+        switch options.numberDecodingStrategy {
+        case .noTypeConversion:         return value.unsignedIntegerValue.map { UInt16($0) }
+        case .automaticTypeConversion:  return value.numberValue?.uint16Value
+        }
     }
     
     fileprivate func unbox(_ value: MessagePackValue, as type: UInt32.Type) throws -> UInt32? {
-        return value.unsignedIntegerValue.map { UInt32($0) }
+        switch options.numberDecodingStrategy {
+        case .noTypeConversion:         return value.unsignedIntegerValue.map { UInt32($0) }
+        case .automaticTypeConversion:  return value.numberValue?.uint32Value
+        }
     }
     
     fileprivate func unbox(_ value: MessagePackValue, as type: UInt64.Type) throws -> UInt64? {
-        return value.unsignedIntegerValue.map { UInt64($0) }
+        switch options.numberDecodingStrategy {
+        case .noTypeConversion:         return value.unsignedIntegerValue.map { UInt64($0) }
+        case .automaticTypeConversion:  return value.numberValue?.uint64Value
+        }
     }
     
     fileprivate func unbox(_ value: MessagePackValue, as type: Float.Type) throws -> Float? {
-        return value.floatValue
+        switch options.numberDecodingStrategy {
+        case .noTypeConversion:         return value.floatValue
+        case .automaticTypeConversion:  return value.numberValue?.floatValue
+        }
     }
     
     fileprivate func unbox(_ value: MessagePackValue, as type: Double.Type) throws -> Double? {
-        return value.doubleValue
+        switch options.numberDecodingStrategy {
+        case .noTypeConversion:         return value.doubleValue
+        case .automaticTypeConversion:  return value.numberValue?.doubleValue
+        }
     }
     
     fileprivate func unbox(_ value: MessagePackValue, as type: String.Type) throws -> String? {
@@ -1449,3 +1498,17 @@ fileprivate class _MessagePackArrayBox: _MessagePackBox {
     }
 }
 
+// MARK: - MessagePackValue
+
+fileprivate extension MessagePackValue {
+    
+    fileprivate var numberValue: NSNumber? {
+        switch self {
+        case .int(let value):       return NSNumber(value: value)
+        case .uint(let value):      return NSNumber(value: value)
+        case .double(let value):    return NSNumber(value: value)
+        case .float(let value):     return NSNumber(value: value)
+        default:                    return nil
+        }
+    }
+}
