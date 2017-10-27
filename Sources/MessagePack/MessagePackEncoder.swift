@@ -1335,70 +1335,70 @@ extension _MessagePackDecoder {
     
     fileprivate func unbox(_ value: MessagePackValue, as type: Int.Type) throws -> Int? {
         switch options.numberDecodingStrategy {
-        case .noTypeConversion:         return value.integerValue.map { Int($0) }
+        case .noTypeConversion:         return value.integerValue.map { Int(truncatingIfNeeded: $0) }
         case .automaticTypeConversion:  return value.numberValue?.intValue
         }
     }
     
     fileprivate func unbox(_ value: MessagePackValue, as type: Int8.Type) throws -> Int8? {
         switch options.numberDecodingStrategy {
-        case .noTypeConversion:         return value.integerValue.map { Int8($0) }
+        case .noTypeConversion:         return value.integerValue.map { Int8(truncatingIfNeeded: $0) }
         case .automaticTypeConversion:  return value.numberValue?.int8Value
         }
     }
     
     fileprivate func unbox(_ value: MessagePackValue, as type: Int16.Type) throws -> Int16? {
         switch options.numberDecodingStrategy {
-        case .noTypeConversion:         return value.integerValue.map { Int16($0) }
+        case .noTypeConversion:         return value.integerValue.map { Int16(truncatingIfNeeded: $0) }
         case .automaticTypeConversion:  return value.numberValue?.int16Value
         }
     }
     
     fileprivate func unbox(_ value: MessagePackValue, as type: Int32.Type) throws -> Int32? {
         switch options.numberDecodingStrategy {
-        case .noTypeConversion:         return value.integerValue.map { Int32($0) }
+        case .noTypeConversion:         return value.integerValue.map { Int32(truncatingIfNeeded: $0) }
         case .automaticTypeConversion:  return value.numberValue?.int32Value
         }
     }
     
     fileprivate func unbox(_ value: MessagePackValue, as type: Int64.Type) throws -> Int64? {
         switch options.numberDecodingStrategy {
-        case .noTypeConversion:         return value.integerValue.map { Int64($0) }
+        case .noTypeConversion:         return value.integerValue.map { Int64(truncatingIfNeeded: $0) }
         case .automaticTypeConversion:  return value.numberValue?.int64Value
         }
     }
     
     fileprivate func unbox(_ value: MessagePackValue, as type: UInt.Type) throws -> UInt? {
         switch options.numberDecodingStrategy {
-        case .noTypeConversion:         return value.unsignedIntegerValue.map { UInt($0) }
+        case .noTypeConversion:         return value.unsignedIntegerValue.map { UInt(truncatingIfNeeded: $0) }
         case .automaticTypeConversion:  return value.numberValue?.uintValue
         }
     }
     
     fileprivate func unbox(_ value: MessagePackValue, as type: UInt8.Type) throws -> UInt8? {
         switch options.numberDecodingStrategy {
-        case .noTypeConversion:         return value.unsignedIntegerValue.map { UInt8($0) }
+        case .noTypeConversion:         return value.unsignedIntegerValue.map { UInt8(truncatingIfNeeded: $0) }
         case .automaticTypeConversion:  return value.numberValue?.uint8Value
         }
     }
     
     fileprivate func unbox(_ value: MessagePackValue, as type: UInt16.Type) throws -> UInt16? {
         switch options.numberDecodingStrategy {
-        case .noTypeConversion:         return value.unsignedIntegerValue.map { UInt16($0) }
+        case .noTypeConversion:         return value.unsignedIntegerValue.map { UInt16(truncatingIfNeeded: $0) }
         case .automaticTypeConversion:  return value.numberValue?.uint16Value
         }
     }
     
     fileprivate func unbox(_ value: MessagePackValue, as type: UInt32.Type) throws -> UInt32? {
         switch options.numberDecodingStrategy {
-        case .noTypeConversion:         return value.unsignedIntegerValue.map { UInt32($0) }
+        case .noTypeConversion:         return value.unsignedIntegerValue.map { UInt32(truncatingIfNeeded: $0) }
         case .automaticTypeConversion:  return value.numberValue?.uint32Value
         }
     }
     
     fileprivate func unbox(_ value: MessagePackValue, as type: UInt64.Type) throws -> UInt64? {
         switch options.numberDecodingStrategy {
-        case .noTypeConversion:         return value.unsignedIntegerValue.map { UInt64($0) }
+        case .noTypeConversion:         return value.unsignedIntegerValue.map { UInt64(truncatingIfNeeded: $0) }
         case .automaticTypeConversion:  return value.numberValue?.uint64Value
         }
     }
