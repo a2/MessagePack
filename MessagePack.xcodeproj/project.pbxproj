@@ -7,6 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		63047BC4202E5418007F1576 /* MessagePackValueSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63047BC3202E5418007F1576 /* MessagePackValueSerialization.swift */; };
+		63047BC5202E5418007F1576 /* MessagePackValueSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63047BC3202E5418007F1576 /* MessagePackValueSerialization.swift */; };
+		63047BC6202E5418007F1576 /* MessagePackValueSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63047BC3202E5418007F1576 /* MessagePackValueSerialization.swift */; };
+		63047BC7202E5418007F1576 /* MessagePackValueSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63047BC3202E5418007F1576 /* MessagePackValueSerialization.swift */; };
+		63047BCD202E5768007F1576 /* CodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63047BC8202E5683007F1576 /* CodableTests.swift */; };
+		63047BCE202E5768007F1576 /* CodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63047BC8202E5683007F1576 /* CodableTests.swift */; };
+		63047BCF202E5768007F1576 /* CodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63047BC8202E5683007F1576 /* CodableTests.swift */; };
+		634F10F6202E27DF00A17B97 /* MessagePackValueTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634F10F5202E27DF00A17B97 /* MessagePackValueTranslator.swift */; };
+		634F10F7202E27DF00A17B97 /* MessagePackValueTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634F10F5202E27DF00A17B97 /* MessagePackValueTranslator.swift */; };
+		634F10F8202E27DF00A17B97 /* MessagePackValueTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634F10F5202E27DF00A17B97 /* MessagePackValueTranslator.swift */; };
+		634F10F9202E27DF00A17B97 /* MessagePackValueTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634F10F5202E27DF00A17B97 /* MessagePackValueTranslator.swift */; };
+		634F10FD202E284F00A17B97 /* MetaSerialization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 634F10FC202E284F00A17B97 /* MetaSerialization.framework */; };
+		634F10FF202E286400A17B97 /* MetaSerialization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 634F10FE202E286400A17B97 /* MetaSerialization.framework */; };
+		634F1101202E286A00A17B97 /* MetaSerialization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 634F1100202E286A00A17B97 /* MetaSerialization.framework */; };
+		634F1103202E286F00A17B97 /* MetaSerialization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 634F1102202E286F00A17B97 /* MetaSerialization.framework */; };
+		634F1107202E28C600A17B97 /* MetaSerialization.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 634F1106202E28C600A17B97 /* MetaSerialization.framework.dSYM */; };
+		634F1117202E2E7500A17B97 /* MessagePackValue+DirectlyCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634F1116202E2E7500A17B97 /* MessagePackValue+DirectlyCodable.swift */; };
+		634F1118202E2E7500A17B97 /* MessagePackValue+DirectlyCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634F1116202E2E7500A17B97 /* MessagePackValue+DirectlyCodable.swift */; };
+		634F1119202E2E7500A17B97 /* MessagePackValue+DirectlyCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634F1116202E2E7500A17B97 /* MessagePackValue+DirectlyCodable.swift */; };
+		634F111A202E2E7500A17B97 /* MessagePackValue+DirectlyCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634F1116202E2E7500A17B97 /* MessagePackValue+DirectlyCodable.swift */; };
 		825321871EFFC9C500914B55 /* MessagePack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8253217D1EFFC9C400914B55 /* MessagePack.framework */; };
 		8253219E1EFFCA0D00914B55 /* ConvenienceInitializers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825321971EFFCA0D00914B55 /* ConvenienceInitializers.swift */; };
 		8253219F1EFFCA0D00914B55 /* ConvenienceProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825321981EFFCA0D00914B55 /* ConvenienceProperties.swift */; };
@@ -119,7 +139,29 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		634F1105202E28BB00A17B97 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				634F1107202E28C600A17B97 /* MetaSerialization.framework.dSYM in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		63047BC3202E5418007F1576 /* MessagePackValueSerialization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagePackValueSerialization.swift; sourceTree = "<group>"; };
+		63047BC8202E5683007F1576 /* CodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableTests.swift; sourceTree = "<group>"; };
+		634F10F5202E27DF00A17B97 /* MessagePackValueTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagePackValueTranslator.swift; sourceTree = "<group>"; };
+		634F10FC202E284F00A17B97 /* MetaSerialization.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetaSerialization.framework; path = Carthage/Build/iOS/MetaSerialization.framework; sourceTree = "<group>"; };
+		634F10FE202E286400A17B97 /* MetaSerialization.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetaSerialization.framework; path = Carthage/Build/Mac/MetaSerialization.framework; sourceTree = "<group>"; };
+		634F1100202E286A00A17B97 /* MetaSerialization.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetaSerialization.framework; path = Carthage/Build/tvOS/MetaSerialization.framework; sourceTree = "<group>"; };
+		634F1102202E286F00A17B97 /* MetaSerialization.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetaSerialization.framework; path = Carthage/Build/watchOS/MetaSerialization.framework; sourceTree = "<group>"; };
+		634F1106202E28C600A17B97 /* MetaSerialization.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = MetaSerialization.framework.dSYM; path = Carthage/Build/Mac/MetaSerialization.framework.dSYM; sourceTree = "<group>"; };
+		634F1116202E2E7500A17B97 /* MessagePackValue+DirectlyCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MessagePackValue+DirectlyCodable.swift"; sourceTree = "<group>"; };
 		8253217D1EFFC9C400914B55 /* MessagePack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MessagePack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		825321861EFFC9C500914B55 /* MessagePackTests-iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MessagePackTests-iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		825321971EFFCA0D00914B55 /* ConvenienceInitializers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConvenienceInitializers.swift; path = Sources/MessagePack/ConvenienceInitializers.swift; sourceTree = SOURCE_ROOT; };
@@ -162,6 +204,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				634F10FD202E284F00A17B97 /* MetaSerialization.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,6 +220,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				634F1103202E286F00A17B97 /* MetaSerialization.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,6 +228,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				634F1101202E286A00A17B97 /* MetaSerialization.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,6 +244,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				634F10FF202E286400A17B97 /* MetaSerialization.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,13 +259,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		634F10F4202E278900A17B97 /* Codable Support */ = {
+			isa = PBXGroup;
+			children = (
+				634F10F5202E27DF00A17B97 /* MessagePackValueTranslator.swift */,
+				63047BC3202E5418007F1576 /* MessagePackValueSerialization.swift */,
+				634F1116202E2E7500A17B97 /* MessagePackValue+DirectlyCodable.swift */,
+			);
+			path = "Codable Support";
+			sourceTree = "<group>";
+		};
+		634F10FB202E284F00A17B97 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				634F1102202E286F00A17B97 /* MetaSerialization.framework */,
+				634F1100202E286A00A17B97 /* MetaSerialization.framework */,
+				634F10FE202E286400A17B97 /* MetaSerialization.framework */,
+				634F10FC202E284F00A17B97 /* MetaSerialization.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		825321731EFFC9C400914B55 = {
 			isa = PBXGroup;
 			children = (
+				634F1106202E28C600A17B97 /* MetaSerialization.framework.dSYM */,
+				634F10F4202E278900A17B97 /* Codable Support */,
 				8253217F1EFFC9C400914B55 /* MessagePack */,
 				8253218A1EFFC9C500914B55 /* MessagePackTests */,
 				825321C91EFFCA2800914B55 /* Resources */,
 				8253217E1EFFC9C400914B55 /* Products */,
+				634F10FB202E284F00A17B97 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -273,6 +343,7 @@
 				825321B41EFFCA1C00914B55 /* StringTests.swift */,
 				825321B51EFFCA1C00914B55 /* SubdataTests.swift */,
 				825321B61EFFCA1C00914B55 /* TrueTests.swift */,
+				63047BC8202E5683007F1576 /* CodableTests.swift */,
 			);
 			name = MessagePackTests;
 			path = Tests/MessagePackTests;
@@ -331,6 +402,7 @@
 				825321791EFFC9C400914B55 /* Frameworks */,
 				8253217A1EFFC9C400914B55 /* Headers */,
 				8253217B1EFFC9C400914B55 /* Resources */,
+				634F1108202E28EB00A17B97 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -367,6 +439,7 @@
 				825321CF1EFFCAED00914B55 /* Frameworks */,
 				825321D01EFFCAED00914B55 /* Headers */,
 				825321D11EFFCAED00914B55 /* Resources */,
+				634F110A202E295000A17B97 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -385,6 +458,7 @@
 				825321DC1EFFCAF900914B55 /* Frameworks */,
 				825321DD1EFFCAF900914B55 /* Headers */,
 				825321DE1EFFCAF900914B55 /* Resources */,
+				634F1109202E294200A17B97 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -421,6 +495,7 @@
 				825321F81EFFCB2A00914B55 /* Frameworks */,
 				825321F91EFFCB2A00914B55 /* Headers */,
 				825321FA1EFFCB2A00914B55 /* Resources */,
+				634F1105202E28BB00A17B97 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -566,18 +641,69 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		634F1108202E28EB00A17B97 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/MetaSerialization.framework",
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/MetaSerialization.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		634F1109202E294200A17B97 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/tvOS/MetaSerialization.framework",
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/MetaSerialization.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		634F110A202E295000A17B97 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/watchOS/MetaSerialization.framework",
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/MetaSerialization.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		825321781EFFC9C400914B55 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				825321A41EFFCA0D00914B55 /* Unpack.swift in Sources */,
+				634F1117202E2E7500A17B97 /* MessagePackValue+DirectlyCodable.swift in Sources */,
 				825321A31EFFCA0D00914B55 /* Subdata.swift in Sources */,
 				825321A11EFFCA0D00914B55 /* MessagePack.swift in Sources */,
 				825321A01EFFCA0D00914B55 /* LiteralConvertibles.swift in Sources */,
+				634F10F6202E27DF00A17B97 /* MessagePackValueTranslator.swift in Sources */,
 				8253219F1EFFCA0D00914B55 /* ConvenienceProperties.swift in Sources */,
 				8253219E1EFFCA0D00914B55 /* ConvenienceInitializers.swift in Sources */,
 				825321A21EFFCA0D00914B55 /* Pack.swift in Sources */,
+				63047BC4202E5418007F1576 /* MessagePackValueSerialization.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -591,6 +717,7 @@
 				825321BB1EFFCA1C00914B55 /* DescriptionTests.swift in Sources */,
 				825321B91EFFCA1C00914B55 /* ConvenienceInitializersTests.swift in Sources */,
 				825321BF1EFFCA1C00914B55 /* ExtendedTests.swift in Sources */,
+				63047BCD202E5768007F1576 /* CodableTests.swift in Sources */,
 				825321C61EFFCA1C00914B55 /* StringTests.swift in Sources */,
 				825321BC1EFFCA1C00914B55 /* DoubleTests.swift in Sources */,
 				825321C81EFFCA1C00914B55 /* TrueTests.swift in Sources */,
@@ -611,12 +738,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				8253224B1EFFCBC700914B55 /* Unpack.swift in Sources */,
+				634F111A202E2E7500A17B97 /* MessagePackValue+DirectlyCodable.swift in Sources */,
 				8253224A1EFFCBC700914B55 /* Subdata.swift in Sources */,
 				825322481EFFCBC700914B55 /* MessagePack.swift in Sources */,
 				825322471EFFCBC700914B55 /* LiteralConvertibles.swift in Sources */,
+				634F10F9202E27DF00A17B97 /* MessagePackValueTranslator.swift in Sources */,
 				825322461EFFCBC700914B55 /* ConvenienceProperties.swift in Sources */,
 				825322451EFFCBC700914B55 /* ConvenienceInitializers.swift in Sources */,
 				825322491EFFCBC700914B55 /* Pack.swift in Sources */,
+				63047BC7202E5418007F1576 /* MessagePackValueSerialization.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -625,12 +755,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				825322441EFFCBC700914B55 /* Unpack.swift in Sources */,
+				634F1119202E2E7500A17B97 /* MessagePackValue+DirectlyCodable.swift in Sources */,
 				825322431EFFCBC700914B55 /* Subdata.swift in Sources */,
 				825322411EFFCBC700914B55 /* MessagePack.swift in Sources */,
 				825322401EFFCBC700914B55 /* LiteralConvertibles.swift in Sources */,
+				634F10F8202E27DF00A17B97 /* MessagePackValueTranslator.swift in Sources */,
 				8253223F1EFFCBC700914B55 /* ConvenienceProperties.swift in Sources */,
 				8253223E1EFFCBC700914B55 /* ConvenienceInitializers.swift in Sources */,
 				825322421EFFCBC700914B55 /* Pack.swift in Sources */,
+				63047BC6202E5418007F1576 /* MessagePackValueSerialization.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -644,6 +777,7 @@
 				825322361EFFCBC400914B55 /* TrueTests.swift in Sources */,
 				8253222D1EFFCBC400914B55 /* ExtendedTests.swift in Sources */,
 				825322321EFFCBC400914B55 /* MapTests.swift in Sources */,
+				63047BCF202E5768007F1576 /* CodableTests.swift in Sources */,
 				8253222B1EFFCBC400914B55 /* EqualityTests.swift in Sources */,
 				825322341EFFCBC400914B55 /* StringTests.swift in Sources */,
 				825322311EFFCBC400914B55 /* IntegerTests.swift in Sources */,
@@ -664,12 +798,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				8253223D1EFFCBC700914B55 /* Unpack.swift in Sources */,
+				634F1118202E2E7500A17B97 /* MessagePackValue+DirectlyCodable.swift in Sources */,
 				8253223C1EFFCBC700914B55 /* Subdata.swift in Sources */,
 				8253223A1EFFCBC700914B55 /* MessagePack.swift in Sources */,
 				825322391EFFCBC700914B55 /* LiteralConvertibles.swift in Sources */,
+				634F10F7202E27DF00A17B97 /* MessagePackValueTranslator.swift in Sources */,
 				825322381EFFCBC700914B55 /* ConvenienceProperties.swift in Sources */,
 				825322371EFFCBC700914B55 /* ConvenienceInitializers.swift in Sources */,
 				8253223B1EFFCBC700914B55 /* Pack.swift in Sources */,
+				63047BC5202E5418007F1576 /* MessagePackValueSerialization.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -683,6 +820,7 @@
 				825322241EFFCBC400914B55 /* TrueTests.swift in Sources */,
 				8253221B1EFFCBC400914B55 /* ExtendedTests.swift in Sources */,
 				825322201EFFCBC400914B55 /* MapTests.swift in Sources */,
+				63047BCE202E5768007F1576 /* CodableTests.swift in Sources */,
 				825322191EFFCBC400914B55 /* EqualityTests.swift in Sources */,
 				825322221EFFCBC400914B55 /* StringTests.swift in Sources */,
 				8253221F1EFFCBC400914B55 /* IntegerTests.swift in Sources */,
@@ -847,6 +985,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Resources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -867,6 +1009,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Resources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -910,6 +1056,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/watchOS",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Resources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -931,6 +1081,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/watchOS",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Resources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -951,6 +1105,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Resources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -971,6 +1129,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Resources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1020,6 +1182,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = "$(SRCROOT)/Resources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -1042,6 +1208,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = "$(SRCROOT)/Resources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
