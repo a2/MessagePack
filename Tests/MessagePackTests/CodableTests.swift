@@ -35,7 +35,7 @@ class CodableTests: XCTestCase {
                                               .string("mass"): .float(3.846e26),
                                               .string("name"): .string("fictional sun")])
         
-        let sun = try? CodableConverter().decode(toType: Sun.self, from: testValue)
+        let sun = try? MessagePackValueSerialization().decode(toType: Sun.self, from: testValue)
         XCTAssert(sun != nil, "Number conversion didn't succeed")
         
     }
@@ -63,7 +63,7 @@ class CodableTests: XCTestCase {
     
     fileprivate func roundWayConvert<T>(value: T, expected: MessagePackValue) where T: Codable, T: Equatable {
         
-        let converted = try? CodableConverter().encode(value)
+        let converted = try? MessagePackValueSerialization().encode(value)
         
         guard converted != nil else {
             XCTFail("Converting value (\(value)) failed")
@@ -72,7 +72,7 @@ class CodableTests: XCTestCase {
         
         XCTAssert(expected == converted!, "Converted value (\(converted!)) and expected value (\(expected)) didn't match.")
         
-        let unconverted = try? CodableConverter().decode(toType: T.self, from: converted!)
+        let unconverted = try? MessagePackValueSerialization().decode(toType: T.self, from: converted!)
         
         guard converted != nil else {
             XCTFail("Unconverting value (\(value)) failed")
