@@ -14,19 +14,24 @@
 		63047BCD202E5768007F1576 /* CodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63047BC8202E5683007F1576 /* CodableTests.swift */; };
 		63047BCE202E5768007F1576 /* CodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63047BC8202E5683007F1576 /* CodableTests.swift */; };
 		63047BCF202E5768007F1576 /* CodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63047BC8202E5683007F1576 /* CodableTests.swift */; };
+		63047BD0202E5BFA007F1576 /* MetaSerialization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 634F10FC202E284F00A17B97 /* MetaSerialization.framework */; };
+		63047BD1202E5BFF007F1576 /* MetaSerialization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 634F10FE202E286400A17B97 /* MetaSerialization.framework */; };
+		63047BD3202E5C09007F1576 /* MetaSerialization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 634F1102202E286F00A17B97 /* MetaSerialization.framework */; };
+		63047BDF202E60B2007F1576 /* MetaSerialization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 634F10FE202E286400A17B97 /* MetaSerialization.framework */; };
 		634F10F6202E27DF00A17B97 /* MessagePackValueTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634F10F5202E27DF00A17B97 /* MessagePackValueTranslator.swift */; };
 		634F10F7202E27DF00A17B97 /* MessagePackValueTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634F10F5202E27DF00A17B97 /* MessagePackValueTranslator.swift */; };
 		634F10F8202E27DF00A17B97 /* MessagePackValueTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634F10F5202E27DF00A17B97 /* MessagePackValueTranslator.swift */; };
 		634F10F9202E27DF00A17B97 /* MessagePackValueTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634F10F5202E27DF00A17B97 /* MessagePackValueTranslator.swift */; };
-		634F10FD202E284F00A17B97 /* MetaSerialization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 634F10FC202E284F00A17B97 /* MetaSerialization.framework */; };
-		634F10FF202E286400A17B97 /* MetaSerialization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 634F10FE202E286400A17B97 /* MetaSerialization.framework */; };
-		634F1101202E286A00A17B97 /* MetaSerialization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 634F1100202E286A00A17B97 /* MetaSerialization.framework */; };
-		634F1103202E286F00A17B97 /* MetaSerialization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 634F1102202E286F00A17B97 /* MetaSerialization.framework */; };
-		634F1107202E28C600A17B97 /* MetaSerialization.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 634F1106202E28C600A17B97 /* MetaSerialization.framework.dSYM */; };
 		634F1117202E2E7500A17B97 /* MessagePackValue+DirectlyCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634F1116202E2E7500A17B97 /* MessagePackValue+DirectlyCodable.swift */; };
 		634F1118202E2E7500A17B97 /* MessagePackValue+DirectlyCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634F1116202E2E7500A17B97 /* MessagePackValue+DirectlyCodable.swift */; };
 		634F1119202E2E7500A17B97 /* MessagePackValue+DirectlyCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634F1116202E2E7500A17B97 /* MessagePackValue+DirectlyCodable.swift */; };
 		634F111A202E2E7500A17B97 /* MessagePackValue+DirectlyCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634F1116202E2E7500A17B97 /* MessagePackValue+DirectlyCodable.swift */; };
+		63F07FC1202F018500EEE4B3 /* MetaSerialization.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 63F07FC0202F018500EEE4B3 /* MetaSerialization.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		63F07FC2202F01A300EEE4B3 /* MetaSerialization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 634F10FC202E284F00A17B97 /* MetaSerialization.framework */; };
+		63F07FC5202F01BC00EEE4B3 /* MetaSerialization.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 63F07FC4202F01BC00EEE4B3 /* MetaSerialization.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		63F07FC8202F01E800EEE4B3 /* MetaSerialization.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 63F07FC7202F01E700EEE4B3 /* MetaSerialization.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		63F07FC9202F031700EEE4B3 /* MetaSerialization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63F07FC7202F01E700EEE4B3 /* MetaSerialization.framework */; };
+		63F07FCB202F037F00EEE4B3 /* MetaSerialization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63F07FC7202F01E700EEE4B3 /* MetaSerialization.framework */; };
 		825321871EFFC9C500914B55 /* MessagePack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8253217D1EFFC9C400914B55 /* MessagePack.framework */; };
 		8253219E1EFFCA0D00914B55 /* ConvenienceInitializers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825321971EFFCA0D00914B55 /* ConvenienceInitializers.swift */; };
 		8253219F1EFFCA0D00914B55 /* ConvenienceProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825321981EFFCA0D00914B55 /* ConvenienceProperties.swift */; };
@@ -140,13 +145,42 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		63047BD7202E6030007F1576 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				63F07FC1202F018500EEE4B3 /* MetaSerialization.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		634F1105202E28BB00A17B97 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
-				634F1107202E28C600A17B97 /* MetaSerialization.framework.dSYM in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63F07FC3202F01B300EEE4B3 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				63F07FC5202F01BC00EEE4B3 /* MetaSerialization.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63F07FC6202F01D700EEE4B3 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				63F07FC8202F01E800EEE4B3 /* MetaSerialization.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,8 +194,10 @@
 		634F10FE202E286400A17B97 /* MetaSerialization.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetaSerialization.framework; path = Carthage/Build/Mac/MetaSerialization.framework; sourceTree = "<group>"; };
 		634F1100202E286A00A17B97 /* MetaSerialization.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetaSerialization.framework; path = Carthage/Build/tvOS/MetaSerialization.framework; sourceTree = "<group>"; };
 		634F1102202E286F00A17B97 /* MetaSerialization.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetaSerialization.framework; path = Carthage/Build/watchOS/MetaSerialization.framework; sourceTree = "<group>"; };
-		634F1106202E28C600A17B97 /* MetaSerialization.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = MetaSerialization.framework.dSYM; path = Carthage/Build/Mac/MetaSerialization.framework.dSYM; sourceTree = "<group>"; };
 		634F1116202E2E7500A17B97 /* MessagePackValue+DirectlyCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MessagePackValue+DirectlyCodable.swift"; sourceTree = "<group>"; };
+		63F07FC0202F018500EEE4B3 /* MetaSerialization.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetaSerialization.framework; path = Carthage/Build/Mac/MetaSerialization.framework; sourceTree = "<group>"; };
+		63F07FC4202F01BC00EEE4B3 /* MetaSerialization.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetaSerialization.framework; path = Carthage/Build/iOS/MetaSerialization.framework; sourceTree = "<group>"; };
+		63F07FC7202F01E700EEE4B3 /* MetaSerialization.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetaSerialization.framework; path = Carthage/Build/tvOS/MetaSerialization.framework; sourceTree = "<group>"; };
 		8253217D1EFFC9C400914B55 /* MessagePack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MessagePack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		825321861EFFC9C500914B55 /* MessagePackTests-iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MessagePackTests-iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		825321971EFFCA0D00914B55 /* ConvenienceInitializers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConvenienceInitializers.swift; path = Sources/MessagePack/ConvenienceInitializers.swift; sourceTree = SOURCE_ROOT; };
@@ -204,7 +240,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				634F10FD202E284F00A17B97 /* MetaSerialization.framework in Frameworks */,
+				63047BD0202E5BFA007F1576 /* MetaSerialization.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,6 +249,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				825321871EFFC9C500914B55 /* MessagePack.framework in Frameworks */,
+				63F07FC2202F01A300EEE4B3 /* MetaSerialization.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,7 +257,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				634F1103202E286F00A17B97 /* MetaSerialization.framework in Frameworks */,
+				63047BD3202E5C09007F1576 /* MetaSerialization.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,7 +265,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				634F1101202E286A00A17B97 /* MetaSerialization.framework in Frameworks */,
+				63F07FCB202F037F00EEE4B3 /* MetaSerialization.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,6 +274,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				825321E91EFFCAFA00914B55 /* MessagePack.framework in Frameworks */,
+				63F07FC9202F031700EEE4B3 /* MetaSerialization.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,7 +282,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				634F10FF202E286400A17B97 /* MetaSerialization.framework in Frameworks */,
+				63047BD1202E5BFF007F1576 /* MetaSerialization.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,6 +291,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				825322051EFFCB2B00914B55 /* MessagePack.framework in Frameworks */,
+				63047BDF202E60B2007F1576 /* MetaSerialization.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,7 +322,9 @@
 		825321731EFFC9C400914B55 = {
 			isa = PBXGroup;
 			children = (
-				634F1106202E28C600A17B97 /* MetaSerialization.framework.dSYM */,
+				63F07FC0202F018500EEE4B3 /* MetaSerialization.framework */,
+				63F07FC4202F01BC00EEE4B3 /* MetaSerialization.framework */,
+				63F07FC7202F01E700EEE4B3 /* MetaSerialization.framework */,
 				634F10F4202E278900A17B97 /* Codable Support */,
 				8253217F1EFFC9C400914B55 /* MessagePack */,
 				8253218A1EFFC9C500914B55 /* MessagePackTests */,
@@ -420,6 +461,7 @@
 				825321821EFFC9C500914B55 /* Sources */,
 				825321831EFFC9C500914B55 /* Frameworks */,
 				825321841EFFC9C500914B55 /* Resources */,
+				63F07FC3202F01B300EEE4B3 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -476,6 +518,7 @@
 				825321E41EFFCAFA00914B55 /* Sources */,
 				825321E51EFFCAFA00914B55 /* Frameworks */,
 				825321E61EFFCAFA00914B55 /* Resources */,
+				63F07FC6202F01D700EEE4B3 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -513,6 +556,7 @@
 				825322001EFFCB2B00914B55 /* Sources */,
 				825322011EFFCB2B00914B55 /* Frameworks */,
 				825322021EFFCB2B00914B55 /* Resources */,
+				63047BD7202E6030007F1576 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -1027,6 +1071,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "Resources/Tests-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = us.pandamonia.MessagePackTests;
@@ -1039,6 +1087,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "Resources/Tests-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = us.pandamonia.MessagePackTests;
@@ -1149,6 +1201,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
 				INFOPLIST_FILE = "Resources/Tests-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = us.pandamonia.MessagePackTests;
@@ -1163,6 +1219,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
 				INFOPLIST_FILE = "Resources/Tests-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = us.pandamonia.MessagePackTests;
@@ -1231,6 +1291,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = "Resources/Tests-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
@@ -1247,6 +1311,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = "Resources/Tests-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;

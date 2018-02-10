@@ -93,6 +93,9 @@ extension MessagePackValue {
         case .float(let value):
             return value
         case .double(let value):
+            // this modification enables strict number conversion
+            // but it makes ConvenienceProperiesTests.testFloatValue fail
+            // return Float(exactly: value)
             return Float(value)
         default:
             return nil
