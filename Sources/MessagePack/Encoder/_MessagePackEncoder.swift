@@ -19,14 +19,14 @@ final class _MessagePackEncoder {
         let userInfo: [CodingUserInfoKey: Any]
     }
     
-    private let options: Options
-    private var storage: MessagePackStorage?
+    fileprivate let options: Options
+    fileprivate var storage: MessagePackStorage?
     
     init(options: Options) {
         self.options = options
     }
     
-    private func existingStorage<T: MessagePackStorage>(type: T.Type) -> T? {
+    fileprivate func existingStorage<T: MessagePackStorage>(type: T.Type) -> T? {
         guard let storage = storage else { return nil }
         
         guard let requiredStorage = storage as? T else {

@@ -11,8 +11,8 @@ import XCTest
 
 class MessagePackEncoderTests: XCTestCase {
     
-    private var encoder: MessagePackEncoder!
-    private var decoder: MessagePackDecoder!
+    fileprivate var encoder: MessagePackEncoder!
+    fileprivate var decoder: MessagePackDecoder!
     
     override func setUp() {
         super.setUp()
@@ -470,7 +470,7 @@ extension MessagePackEncoderTests {
 // MARK: - Utilities
 extension MessagePackEncoderTests {
     
-    private func _testEncode<T: Model>(model: T) {
+    fileprivate func _testEncode<T: Model>(model: T) {
         do {
             let encoded = try encoder.encodeToMessagePack(model)
             XCTAssertEqual(encoded, model.encoded)
@@ -479,7 +479,7 @@ extension MessagePackEncoderTests {
         }
     }
     
-    private func _testEncodeIgnoringKeysWithNilValue<T: OptionalModel>(model: T) {
+    fileprivate func _testEncodeIgnoringKeysWithNilValue<T: OptionalModel>(model: T) {
         do {
             encoder.keyedEncodingOptions = .ignoreKeysWithNilValue
             let encoded = try encoder.encodeToMessagePack(model)

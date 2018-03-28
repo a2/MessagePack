@@ -19,12 +19,12 @@ final class MessagePackKeyedDecodingContainer<K: CodingKey> {
 // MARK: - Helper
 extension MessagePackKeyedDecodingContainer {
     
-    private func _decode<T: MessagePackRepresentable>(_ type: T.Type, forKey key: Key) throws -> T {
+    fileprivate func _decode<T: MessagePackRepresentable>(_ type: T.Type, forKey key: Key) throws -> T {
         let value = try valueForKey(key)
         return try _decode(value, type: type)
     }
     
-    private func _decode<T: MessagePackRepresentable>(_ value: MessagePackValue, type: T.Type) throws -> T {
+    fileprivate func _decode<T: MessagePackRepresentable>(_ value: MessagePackValue, type: T.Type) throws -> T {
         
         guard let decoded = T(messagePack: value) else {
             let msg = "Cannot decode \(type) from \(value)"
@@ -34,7 +34,7 @@ extension MessagePackKeyedDecodingContainer {
         return decoded
     }
     
-    private func _decodeIfPresent<T: MessagePackRepresentable>(_ type: T.Type, forKey key: Key) throws -> T? {
+    fileprivate func _decodeIfPresent<T: MessagePackRepresentable>(_ type: T.Type, forKey key: Key) throws -> T? {
         
         guard let value = map[.string(key.stringValue)] else {
             return nil
@@ -47,17 +47,17 @@ extension MessagePackKeyedDecodingContainer {
         }
     }
     
-    private func _decodeDecodable<T: Decodable>(_ type: T.Type, forKey key: Key) throws -> T {
+    fileprivate func _decodeDecodable<T: Decodable>(_ type: T.Type, forKey key: Key) throws -> T {
         let value = try valueForKey(key)
         return try _decodeDecodable(value, type: type)
     }
     
-    private func _decodeDecodable<T: Decodable>(_ value: MessagePackValue, type: T.Type) throws -> T {
+    fileprivate func _decodeDecodable<T: Decodable>(_ value: MessagePackValue, type: T.Type) throws -> T {
         let decoder = _MessagePackDecoder(value: value)
         return try T(from: decoder)
     }
     
-    private func _decodeDecodableIfPresent<T: Decodable>(_ type: T.Type, forKey key: Key) throws -> T? {
+    fileprivate func _decodeDecodableIfPresent<T: Decodable>(_ type: T.Type, forKey key: Key) throws -> T? {
         
         guard let value = map[.string(key.stringValue)] else {
             return nil
@@ -70,7 +70,7 @@ extension MessagePackKeyedDecodingContainer {
         }
     }
     
-    private func valueForKey(_ key: Key) throws -> MessagePackValue {
+    fileprivate func valueForKey(_ key: Key) throws -> MessagePackValue {
         
         guard let value = map[.string(key.stringValue)] else {
             let msg = "Key not found : \(key)"

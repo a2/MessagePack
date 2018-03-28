@@ -10,7 +10,7 @@ import XCTest
 
 class MessagePackDecoderTests: XCTestCase {
     
-    private var decoder: MessagePackDecoder!
+    fileprivate var decoder: MessagePackDecoder!
     
     override func setUp() {
         super.setUp()
@@ -361,11 +361,11 @@ extension MessagePackDecoderTests {
 // MARK: - Utilities
 extension MessagePackDecoderTests {
     
-    private func _testDecode<T: Model>(model: T) {
+    fileprivate func _testDecode<T: Model>(model: T) {
         _testDecode(model: model, messagePack: model.encoded)
     }
     
-    private func _testDecode<T: Decodable & Equatable>(model: T, messagePack: MessagePackValue) {
+    fileprivate func _testDecode<T: Decodable & Equatable>(model: T, messagePack: MessagePackValue) {
         do {
             let decoded = try decoder.decodeMessagePack(T.self, from: messagePack)
             XCTAssertEqual(decoded, model)

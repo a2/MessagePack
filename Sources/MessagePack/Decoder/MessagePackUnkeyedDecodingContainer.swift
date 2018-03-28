@@ -10,7 +10,7 @@ import Foundation
 final class MessagePackUnkeyedDecodingContainer {
     
     let array: [MessagePackValue]
-    private(set) var currentIndex: Int
+    fileprivate(set) var currentIndex: Int
     
     init(array: [MessagePackValue]) {
         self.array = array
@@ -21,7 +21,7 @@ final class MessagePackUnkeyedDecodingContainer {
 // MARK: - Helper
 extension MessagePackUnkeyedDecodingContainer {
     
-    private func _decode<T: MessagePackRepresentable>(_ type: T.Type) throws -> T {
+    fileprivate func _decode<T: MessagePackRepresentable>(_ type: T.Type) throws -> T {
         try ensureNotAtEnd(type: type)
         
         guard let value = T(messagePack: array[currentIndex]) else {
@@ -34,7 +34,7 @@ extension MessagePackUnkeyedDecodingContainer {
         return value
     }
     
-    private func _decodeDecodable<T: Decodable>(_ type: T.Type) throws -> T {
+    fileprivate func _decodeDecodable<T: Decodable>(_ type: T.Type) throws -> T {
         try ensureNotAtEnd(type: type)
         
         let decoder = _MessagePackDecoder(value: array[currentIndex])
@@ -44,7 +44,7 @@ extension MessagePackUnkeyedDecodingContainer {
         return decoded
     }
     
-    private func ensureNotAtEnd(type: Any.Type) throws {
+    fileprivate func ensureNotAtEnd(type: Any.Type) throws {
         
         guard !isAtEnd else {
             let msg = "Unkeyed container is at end"

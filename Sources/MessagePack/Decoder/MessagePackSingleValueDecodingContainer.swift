@@ -19,7 +19,7 @@ final class MessagePackSingleValueDecodingContainer {
 // MARK: - Helper
 extension MessagePackSingleValueDecodingContainer {
     
-    private func _decode<T: MessagePackRepresentable>(_ type: T.Type) throws -> T {
+    fileprivate func _decode<T: MessagePackRepresentable>(_ type: T.Type) throws -> T {
         
         guard let value = T(messagePack: self.value) else {
             let msg = "Cannot decode \(type) from \(self.value)"
@@ -30,7 +30,7 @@ extension MessagePackSingleValueDecodingContainer {
         return value
     }
     
-    private func _decodeDecodable<T: Decodable>(_ type: T.Type) throws -> T {
+    fileprivate func _decodeDecodable<T: Decodable>(_ type: T.Type) throws -> T {
         
         let decoder = _MessagePackDecoder(value: value)
         return try T(from: decoder)

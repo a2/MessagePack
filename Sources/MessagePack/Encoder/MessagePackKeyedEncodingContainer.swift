@@ -9,8 +9,8 @@ import Foundation
 
 final class MessagePackKeyedEncodingContainer<K: CodingKey> {
     
-    private let storage: MessagePackDictionaryStorage
-    private let options: _MessagePackEncoder.Options
+    fileprivate let storage: MessagePackDictionaryStorage
+    fileprivate let options: _MessagePackEncoder.Options
     
     init(storage: MessagePackDictionaryStorage, options: _MessagePackEncoder.Options) {
         self.storage = storage
@@ -21,11 +21,11 @@ final class MessagePackKeyedEncodingContainer<K: CodingKey> {
 // MARK: Helper
 extension MessagePackKeyedEncodingContainer {
     
-    private func _encode<T: MessagePackRepresentable>(_ value: T, forKey key: K) throws {
+    fileprivate func _encode<T: MessagePackRepresentable>(_ value: T, forKey key: K) throws {
         storage[key.stringValue] = value.messagePack
     }
     
-    private func _encodeIfPresent<T: MessagePackRepresentable>(_ value: T?, forKey key: K) throws {
+    fileprivate func _encodeIfPresent<T: MessagePackRepresentable>(_ value: T?, forKey key: K) throws {
         if options.keyedEncodingOptions.contains(.ignoreKeysWithNilValue) && (value == nil) {
             return
         }
@@ -37,13 +37,13 @@ extension MessagePackKeyedEncodingContainer {
         }
     }
     
-    private func _encodeEncodable<T: Encodable>(_ value: T, forKey key: Key) throws {
+    fileprivate func _encodeEncodable<T: Encodable>(_ value: T, forKey key: Key) throws {
         let encoder = _MessagePackEncoder(options: options)
         try value.encode(to: encoder)
         storage[key.stringValue] = encoder.messagePack
     }
     
-    private func _encodeEncodableIfPresent<T: Encodable>(_ value: T?, forKey key: Key) throws {
+    fileprivate func _encodeEncodableIfPresent<T: Encodable>(_ value: T?, forKey key: Key) throws {
         if options.keyedEncodingOptions.contains(.ignoreKeysWithNilValue) && (value == nil) {
             return
         }

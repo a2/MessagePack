@@ -9,8 +9,8 @@ import Foundation
 
 final class MessagePackUnkeyedEncodingContainer {
 
-    private let storage: MessagePackArrayStorage
-    private let options: _MessagePackEncoder.Options
+    fileprivate let storage: MessagePackArrayStorage
+    fileprivate let options: _MessagePackEncoder.Options
     
     init(storage: MessagePackArrayStorage, options: _MessagePackEncoder.Options) {
         self.storage = storage
@@ -21,11 +21,11 @@ final class MessagePackUnkeyedEncodingContainer {
 // MARK: - Helper
 extension MessagePackUnkeyedEncodingContainer {
     
-    private func _encode<T: MessagePackRepresentable>(_ value: T) throws {
+    fileprivate func _encode<T: MessagePackRepresentable>(_ value: T) throws {
         storage.append(value.messagePack)
     }
     
-    private func _encodeEncodable<T: Encodable>(_ value: T) throws {
+    fileprivate func _encodeEncodable<T: Encodable>(_ value: T) throws {
         let encoder = _MessagePackEncoder(options: options)
         try value.encode(to: encoder)
         storage.append(encoder.messagePack)

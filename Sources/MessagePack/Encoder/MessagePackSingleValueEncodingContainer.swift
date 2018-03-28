@@ -9,8 +9,8 @@ import Foundation
 
 final class MessagePackSingleValueEncodingContainer {
     
-    private let storage: MessagePackValueStorage
-    private let options: _MessagePackEncoder.Options
+    fileprivate let storage: MessagePackValueStorage
+    fileprivate let options: _MessagePackEncoder.Options
     
     init(storage: MessagePackValueStorage, options: _MessagePackEncoder.Options) {
         self.storage = storage
@@ -21,11 +21,11 @@ final class MessagePackSingleValueEncodingContainer {
 // MARK: - Helper
 extension MessagePackSingleValueEncodingContainer {
     
-    private func _encode<T: MessagePackRepresentable>(_ value: T) throws {
+    fileprivate func _encode<T: MessagePackRepresentable>(_ value: T) throws {
         storage.value = value.messagePack
     }
     
-    private func _encodeEncodable<T: Encodable>(_ value: T) throws {
+    fileprivate func _encodeEncodable<T: Encodable>(_ value: T) throws {
         let encoder = _MessagePackEncoder(options: options)
         try value.encode(to: encoder)
         storage.value = encoder.messagePack

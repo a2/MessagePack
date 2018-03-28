@@ -29,7 +29,7 @@ open class MessagePackDecoder {
 
 final class _MessagePackDecoder {
     
-    private let value: MessagePackValue
+    fileprivate let value: MessagePackValue
     
     init(value: MessagePackValue) {
         self.value = value
