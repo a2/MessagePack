@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		261F54B41F83A9470085CAB2 /* MessagePackEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261F54B31F83A9470085CAB2 /* MessagePackEncoder.swift */; };
+		261F54B71F83A9640085CAB2 /* MessagePackEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261F54B31F83A9470085CAB2 /* MessagePackEncoder.swift */; };
+		261F54B81F83A9640085CAB2 /* MessagePackEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261F54B31F83A9470085CAB2 /* MessagePackEncoder.swift */; };
+		261F54B91F83A9650085CAB2 /* MessagePackEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261F54B31F83A9470085CAB2 /* MessagePackEncoder.swift */; };
+		261F54BA1F83A9670085CAB2 /* MessagePackEncoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261F54B51F83A9570085CAB2 /* MessagePackEncoderTests.swift */; };
+		261F54BB1F83A9670085CAB2 /* MessagePackEncoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261F54B51F83A9570085CAB2 /* MessagePackEncoderTests.swift */; };
+		261F54BC1F83A9670085CAB2 /* MessagePackEncoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261F54B51F83A9570085CAB2 /* MessagePackEncoderTests.swift */; };
 		825321871EFFC9C500914B55 /* MessagePack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8253217D1EFFC9C400914B55 /* MessagePack.framework */; };
 		8253219E1EFFCA0D00914B55 /* ConvenienceInitializers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825321971EFFCA0D00914B55 /* ConvenienceInitializers.swift */; };
 		8253219F1EFFCA0D00914B55 /* ConvenienceProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825321981EFFCA0D00914B55 /* ConvenienceProperties.swift */; };
@@ -120,6 +127,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		261F54B31F83A9470085CAB2 /* MessagePackEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagePackEncoder.swift; sourceTree = "<group>"; };
+		261F54B51F83A9570085CAB2 /* MessagePackEncoderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagePackEncoderTests.swift; sourceTree = "<group>"; };
 		8253217D1EFFC9C400914B55 /* MessagePack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MessagePack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		825321861EFFC9C500914B55 /* MessagePackTests-iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MessagePackTests-iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		825321971EFFCA0D00914B55 /* ConvenienceInitializers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConvenienceInitializers.swift; path = Sources/MessagePack/ConvenienceInitializers.swift; sourceTree = SOURCE_ROOT; };
@@ -244,6 +253,7 @@
 				825321981EFFCA0D00914B55 /* ConvenienceProperties.swift */,
 				825321991EFFCA0D00914B55 /* LiteralConvertibles.swift */,
 				8253219A1EFFCA0D00914B55 /* MessagePack.swift */,
+				261F54B31F83A9470085CAB2 /* MessagePackEncoder.swift */,
 				8253219B1EFFCA0D00914B55 /* Pack.swift */,
 				8253219C1EFFCA0D00914B55 /* Subdata.swift */,
 				8253219D1EFFCA0D00914B55 /* Unpack.swift */,
@@ -269,6 +279,7 @@
 				825321B01EFFCA1C00914B55 /* HashValueTests.swift */,
 				825321B11EFFCA1C00914B55 /* IntegerTests.swift */,
 				825321B21EFFCA1C00914B55 /* MapTests.swift */,
+				261F54B51F83A9570085CAB2 /* MessagePackEncoderTests.swift */,
 				825321B31EFFCA1C00914B55 /* NilTests.swift */,
 				825321B41EFFCA1C00914B55 /* StringTests.swift */,
 				825321B51EFFCA1C00914B55 /* SubdataTests.swift */,
@@ -578,6 +589,7 @@
 				8253219F1EFFCA0D00914B55 /* ConvenienceProperties.swift in Sources */,
 				8253219E1EFFCA0D00914B55 /* ConvenienceInitializers.swift in Sources */,
 				825321A21EFFCA0D00914B55 /* Pack.swift in Sources */,
+				261F54B41F83A9470085CAB2 /* MessagePackEncoder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -587,6 +599,7 @@
 			files = (
 				825321C31EFFCA1C00914B55 /* IntegerTests.swift in Sources */,
 				825321C21EFFCA1C00914B55 /* HashValueTests.swift in Sources */,
+				261F54BA1F83A9670085CAB2 /* MessagePackEncoderTests.swift in Sources */,
 				825321C11EFFCA1C00914B55 /* FloatTests.swift in Sources */,
 				825321BB1EFFCA1C00914B55 /* DescriptionTests.swift in Sources */,
 				825321B91EFFCA1C00914B55 /* ConvenienceInitializersTests.swift in Sources */,
@@ -617,6 +630,7 @@
 				825322461EFFCBC700914B55 /* ConvenienceProperties.swift in Sources */,
 				825322451EFFCBC700914B55 /* ConvenienceInitializers.swift in Sources */,
 				825322491EFFCBC700914B55 /* Pack.swift in Sources */,
+				261F54B91F83A9650085CAB2 /* MessagePackEncoder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -631,6 +645,7 @@
 				8253223F1EFFCBC700914B55 /* ConvenienceProperties.swift in Sources */,
 				8253223E1EFFCBC700914B55 /* ConvenienceInitializers.swift in Sources */,
 				825322421EFFCBC700914B55 /* Pack.swift in Sources */,
+				261F54B81F83A9640085CAB2 /* MessagePackEncoder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -640,6 +655,7 @@
 			files = (
 				825322281EFFCBC400914B55 /* ConveniencePropertiesTests.swift in Sources */,
 				8253222E1EFFCBC400914B55 /* FalseTests.swift in Sources */,
+				261F54BB1F83A9670085CAB2 /* MessagePackEncoderTests.swift in Sources */,
 				825322291EFFCBC400914B55 /* DescriptionTests.swift in Sources */,
 				825322361EFFCBC400914B55 /* TrueTests.swift in Sources */,
 				8253222D1EFFCBC400914B55 /* ExtendedTests.swift in Sources */,
@@ -670,6 +686,7 @@
 				825322381EFFCBC700914B55 /* ConvenienceProperties.swift in Sources */,
 				825322371EFFCBC700914B55 /* ConvenienceInitializers.swift in Sources */,
 				8253223B1EFFCBC700914B55 /* Pack.swift in Sources */,
+				261F54B71F83A9640085CAB2 /* MessagePackEncoder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -679,6 +696,7 @@
 			files = (
 				825322161EFFCBC400914B55 /* ConveniencePropertiesTests.swift in Sources */,
 				8253221C1EFFCBC400914B55 /* FalseTests.swift in Sources */,
+				261F54BC1F83A9670085CAB2 /* MessagePackEncoderTests.swift in Sources */,
 				825322171EFFCBC400914B55 /* DescriptionTests.swift in Sources */,
 				825322241EFFCBC400914B55 /* TrueTests.swift in Sources */,
 				8253221B1EFFCBC400914B55 /* ExtendedTests.swift in Sources */,
