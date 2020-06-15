@@ -93,6 +93,71 @@
 		825322491EFFCBC700914B55 /* Pack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8253219B1EFFCA0D00914B55 /* Pack.swift */; };
 		8253224A1EFFCBC700914B55 /* Subdata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8253219C1EFFCA0D00914B55 /* Subdata.swift */; };
 		8253224B1EFFCBC700914B55 /* Unpack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8253219D1EFFCA0D00914B55 /* Unpack.swift */; };
+		BDB77A5C206B3F57001925D0 /* MessagePackUnkeyedDecodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A51206B3F57001925D0 /* MessagePackUnkeyedDecodingContainer.swift */; };
+		BDB77A5D206B3F57001925D0 /* MessagePackUnkeyedDecodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A51206B3F57001925D0 /* MessagePackUnkeyedDecodingContainer.swift */; };
+		BDB77A5E206B3F57001925D0 /* MessagePackUnkeyedDecodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A51206B3F57001925D0 /* MessagePackUnkeyedDecodingContainer.swift */; };
+		BDB77A5F206B3F57001925D0 /* MessagePackUnkeyedDecodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A51206B3F57001925D0 /* MessagePackUnkeyedDecodingContainer.swift */; };
+		BDB77A60206B3F57001925D0 /* MessagePackKeyedDecodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A52206B3F57001925D0 /* MessagePackKeyedDecodingContainer.swift */; };
+		BDB77A61206B3F57001925D0 /* MessagePackKeyedDecodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A52206B3F57001925D0 /* MessagePackKeyedDecodingContainer.swift */; };
+		BDB77A62206B3F57001925D0 /* MessagePackKeyedDecodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A52206B3F57001925D0 /* MessagePackKeyedDecodingContainer.swift */; };
+		BDB77A63206B3F57001925D0 /* MessagePackKeyedDecodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A52206B3F57001925D0 /* MessagePackKeyedDecodingContainer.swift */; };
+		BDB77A64206B3F57001925D0 /* MessagePackDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A53206B3F57001925D0 /* MessagePackDecoder.swift */; };
+		BDB77A65206B3F57001925D0 /* MessagePackDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A53206B3F57001925D0 /* MessagePackDecoder.swift */; };
+		BDB77A66206B3F57001925D0 /* MessagePackDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A53206B3F57001925D0 /* MessagePackDecoder.swift */; };
+		BDB77A67206B3F57001925D0 /* MessagePackDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A53206B3F57001925D0 /* MessagePackDecoder.swift */; };
+		BDB77A68206B3F57001925D0 /* MessagePackSingleValueDecodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A54206B3F57001925D0 /* MessagePackSingleValueDecodingContainer.swift */; };
+		BDB77A69206B3F57001925D0 /* MessagePackSingleValueDecodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A54206B3F57001925D0 /* MessagePackSingleValueDecodingContainer.swift */; };
+		BDB77A6A206B3F57001925D0 /* MessagePackSingleValueDecodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A54206B3F57001925D0 /* MessagePackSingleValueDecodingContainer.swift */; };
+		BDB77A6B206B3F57001925D0 /* MessagePackSingleValueDecodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A54206B3F57001925D0 /* MessagePackSingleValueDecodingContainer.swift */; };
+		BDB77A6C206B3F57001925D0 /* MessagePackSingleValueEncodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A56206B3F57001925D0 /* MessagePackSingleValueEncodingContainer.swift */; };
+		BDB77A6D206B3F57001925D0 /* MessagePackSingleValueEncodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A56206B3F57001925D0 /* MessagePackSingleValueEncodingContainer.swift */; };
+		BDB77A6E206B3F57001925D0 /* MessagePackSingleValueEncodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A56206B3F57001925D0 /* MessagePackSingleValueEncodingContainer.swift */; };
+		BDB77A6F206B3F57001925D0 /* MessagePackSingleValueEncodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A56206B3F57001925D0 /* MessagePackSingleValueEncodingContainer.swift */; };
+		BDB77A70206B3F57001925D0 /* _MessagePackEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A57206B3F57001925D0 /* _MessagePackEncoder.swift */; };
+		BDB77A71206B3F57001925D0 /* _MessagePackEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A57206B3F57001925D0 /* _MessagePackEncoder.swift */; };
+		BDB77A72206B3F57001925D0 /* _MessagePackEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A57206B3F57001925D0 /* _MessagePackEncoder.swift */; };
+		BDB77A73206B3F57001925D0 /* _MessagePackEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A57206B3F57001925D0 /* _MessagePackEncoder.swift */; };
+		BDB77A74206B3F57001925D0 /* MessagePackStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A58206B3F57001925D0 /* MessagePackStorage.swift */; };
+		BDB77A75206B3F57001925D0 /* MessagePackStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A58206B3F57001925D0 /* MessagePackStorage.swift */; };
+		BDB77A76206B3F57001925D0 /* MessagePackStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A58206B3F57001925D0 /* MessagePackStorage.swift */; };
+		BDB77A77206B3F57001925D0 /* MessagePackStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A58206B3F57001925D0 /* MessagePackStorage.swift */; };
+		BDB77A78206B3F57001925D0 /* MessagePackUnkeyedEncodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A59206B3F57001925D0 /* MessagePackUnkeyedEncodingContainer.swift */; };
+		BDB77A79206B3F57001925D0 /* MessagePackUnkeyedEncodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A59206B3F57001925D0 /* MessagePackUnkeyedEncodingContainer.swift */; };
+		BDB77A7A206B3F57001925D0 /* MessagePackUnkeyedEncodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A59206B3F57001925D0 /* MessagePackUnkeyedEncodingContainer.swift */; };
+		BDB77A7B206B3F57001925D0 /* MessagePackUnkeyedEncodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A59206B3F57001925D0 /* MessagePackUnkeyedEncodingContainer.swift */; };
+		BDB77A7C206B3F57001925D0 /* MessagePackKeyedEncodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A5A206B3F57001925D0 /* MessagePackKeyedEncodingContainer.swift */; };
+		BDB77A7D206B3F57001925D0 /* MessagePackKeyedEncodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A5A206B3F57001925D0 /* MessagePackKeyedEncodingContainer.swift */; };
+		BDB77A7E206B3F57001925D0 /* MessagePackKeyedEncodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A5A206B3F57001925D0 /* MessagePackKeyedEncodingContainer.swift */; };
+		BDB77A7F206B3F57001925D0 /* MessagePackKeyedEncodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A5A206B3F57001925D0 /* MessagePackKeyedEncodingContainer.swift */; };
+		BDB77A80206B3F57001925D0 /* MessagePackEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A5B206B3F57001925D0 /* MessagePackEncoder.swift */; };
+		BDB77A81206B3F57001925D0 /* MessagePackEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A5B206B3F57001925D0 /* MessagePackEncoder.swift */; };
+		BDB77A82206B3F57001925D0 /* MessagePackEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A5B206B3F57001925D0 /* MessagePackEncoder.swift */; };
+		BDB77A83206B3F57001925D0 /* MessagePackEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A5B206B3F57001925D0 /* MessagePackEncoder.swift */; };
+		BDB77A85206B40FF001925D0 /* MessagePackRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A84206B40FF001925D0 /* MessagePackRepresentable.swift */; };
+		BDB77A86206B40FF001925D0 /* MessagePackRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A84206B40FF001925D0 /* MessagePackRepresentable.swift */; };
+		BDB77A87206B40FF001925D0 /* MessagePackRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A84206B40FF001925D0 /* MessagePackRepresentable.swift */; };
+		BDB77A88206B40FF001925D0 /* MessagePackRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A84206B40FF001925D0 /* MessagePackRepresentable.swift */; };
+		BDB77A8C206B6ADC001925D0 /* MessagePackDecoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A8A206B6ADC001925D0 /* MessagePackDecoderTests.swift */; };
+		BDB77A8D206B6ADC001925D0 /* MessagePackDecoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A8A206B6ADC001925D0 /* MessagePackDecoderTests.swift */; };
+		BDB77A8E206B6ADC001925D0 /* MessagePackDecoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A8A206B6ADC001925D0 /* MessagePackDecoderTests.swift */; };
+		BDB77A8F206B6ADC001925D0 /* MessagePackEncoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A8B206B6ADC001925D0 /* MessagePackEncoderTests.swift */; };
+		BDB77A90206B6ADC001925D0 /* MessagePackEncoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A8B206B6ADC001925D0 /* MessagePackEncoderTests.swift */; };
+		BDB77A91206B6ADC001925D0 /* MessagePackEncoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A8B206B6ADC001925D0 /* MessagePackEncoderTests.swift */; };
+		BDB77A98206B6B14001925D0 /* SingleOptionalTypeModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A92206B6B14001925D0 /* SingleOptionalTypeModels.swift */; };
+		BDB77A99206B6B14001925D0 /* SingleOptionalTypeModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A92206B6B14001925D0 /* SingleOptionalTypeModels.swift */; };
+		BDB77A9A206B6B14001925D0 /* SingleOptionalTypeModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A92206B6B14001925D0 /* SingleOptionalTypeModels.swift */; };
+		BDB77A9E206B6B14001925D0 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A94206B6B14001925D0 /* Models.swift */; };
+		BDB77A9F206B6B14001925D0 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A94206B6B14001925D0 /* Models.swift */; };
+		BDB77AA0206B6B14001925D0 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A94206B6B14001925D0 /* Models.swift */; };
+		BDB77AA1206B6B14001925D0 /* OptionalModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A95206B6B14001925D0 /* OptionalModels.swift */; };
+		BDB77AA2206B6B14001925D0 /* OptionalModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A95206B6B14001925D0 /* OptionalModels.swift */; };
+		BDB77AA3206B6B14001925D0 /* OptionalModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A95206B6B14001925D0 /* OptionalModels.swift */; };
+		BDB77AA4206B6B14001925D0 /* ModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A96206B6B14001925D0 /* ModelProtocol.swift */; };
+		BDB77AA5206B6B14001925D0 /* ModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A96206B6B14001925D0 /* ModelProtocol.swift */; };
+		BDB77AA6206B6B14001925D0 /* ModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A96206B6B14001925D0 /* ModelProtocol.swift */; };
+		BDB77AA7206B6B14001925D0 /* SingleTypeModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A97206B6B14001925D0 /* SingleTypeModels.swift */; };
+		BDB77AA8206B6B14001925D0 /* SingleTypeModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A97206B6B14001925D0 /* SingleTypeModels.swift */; };
+		BDB77AA9206B6B14001925D0 /* SingleTypeModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB77A97206B6B14001925D0 /* SingleTypeModels.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -155,6 +220,24 @@
 		825321E81EFFCAFA00914B55 /* MessagePackTests-tvOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MessagePackTests-tvOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		825321FC1EFFCB2A00914B55 /* MessagePack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MessagePack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		825322041EFFCB2B00914B55 /* MessagePackTests-macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MessagePackTests-macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDB77A51206B3F57001925D0 /* MessagePackUnkeyedDecodingContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagePackUnkeyedDecodingContainer.swift; sourceTree = "<group>"; };
+		BDB77A52206B3F57001925D0 /* MessagePackKeyedDecodingContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagePackKeyedDecodingContainer.swift; sourceTree = "<group>"; };
+		BDB77A53206B3F57001925D0 /* MessagePackDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagePackDecoder.swift; sourceTree = "<group>"; };
+		BDB77A54206B3F57001925D0 /* MessagePackSingleValueDecodingContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagePackSingleValueDecodingContainer.swift; sourceTree = "<group>"; };
+		BDB77A56206B3F57001925D0 /* MessagePackSingleValueEncodingContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagePackSingleValueEncodingContainer.swift; sourceTree = "<group>"; };
+		BDB77A57206B3F57001925D0 /* _MessagePackEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _MessagePackEncoder.swift; sourceTree = "<group>"; };
+		BDB77A58206B3F57001925D0 /* MessagePackStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagePackStorage.swift; sourceTree = "<group>"; };
+		BDB77A59206B3F57001925D0 /* MessagePackUnkeyedEncodingContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagePackUnkeyedEncodingContainer.swift; sourceTree = "<group>"; };
+		BDB77A5A206B3F57001925D0 /* MessagePackKeyedEncodingContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagePackKeyedEncodingContainer.swift; sourceTree = "<group>"; };
+		BDB77A5B206B3F57001925D0 /* MessagePackEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagePackEncoder.swift; sourceTree = "<group>"; };
+		BDB77A84206B40FF001925D0 /* MessagePackRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagePackRepresentable.swift; sourceTree = "<group>"; };
+		BDB77A8A206B6ADC001925D0 /* MessagePackDecoderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagePackDecoderTests.swift; sourceTree = "<group>"; };
+		BDB77A8B206B6ADC001925D0 /* MessagePackEncoderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagePackEncoderTests.swift; sourceTree = "<group>"; };
+		BDB77A92206B6B14001925D0 /* SingleOptionalTypeModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleOptionalTypeModels.swift; sourceTree = "<group>"; };
+		BDB77A94206B6B14001925D0 /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		BDB77A95206B6B14001925D0 /* OptionalModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionalModels.swift; sourceTree = "<group>"; };
+		BDB77A96206B6B14001925D0 /* ModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelProtocol.swift; sourceTree = "<group>"; };
+		BDB77A97206B6B14001925D0 /* SingleTypeModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleTypeModels.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,6 +323,9 @@
 		8253217F1EFFC9C400914B55 /* MessagePack */ = {
 			isa = PBXGroup;
 			children = (
+				BDB77A55206B3F57001925D0 /* Encoder */,
+				BDB77A50206B3F57001925D0 /* Decoder */,
+				BDB77A84206B40FF001925D0 /* MessagePackRepresentable.swift */,
 				825321971EFFCA0D00914B55 /* ConvenienceInitializers.swift */,
 				825321981EFFCA0D00914B55 /* ConvenienceProperties.swift */,
 				825321991EFFCA0D00914B55 /* LiteralConvertibles.swift */,
@@ -255,6 +341,7 @@
 		8253218A1EFFC9C500914B55 /* MessagePackTests */ = {
 			isa = PBXGroup;
 			children = (
+				BDB77A89206B67A8001925D0 /* Codable */,
 				825321A51EFFCA1C00914B55 /* ArrayTests.swift */,
 				825321A61EFFCA1C00914B55 /* BinaryTests.swift */,
 				825321A71EFFCA1C00914B55 /* ConvenienceInitializersTests.swift */,
@@ -286,6 +373,44 @@
 				825321CC1EFFCA2800914B55 /* Tests-Info.plist */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		BDB77A50206B3F57001925D0 /* Decoder */ = {
+			isa = PBXGroup;
+			children = (
+				BDB77A53206B3F57001925D0 /* MessagePackDecoder.swift */,
+				BDB77A52206B3F57001925D0 /* MessagePackKeyedDecodingContainer.swift */,
+				BDB77A54206B3F57001925D0 /* MessagePackSingleValueDecodingContainer.swift */,
+				BDB77A51206B3F57001925D0 /* MessagePackUnkeyedDecodingContainer.swift */,
+			);
+			path = Decoder;
+			sourceTree = "<group>";
+		};
+		BDB77A55206B3F57001925D0 /* Encoder */ = {
+			isa = PBXGroup;
+			children = (
+				BDB77A5B206B3F57001925D0 /* MessagePackEncoder.swift */,
+				BDB77A57206B3F57001925D0 /* _MessagePackEncoder.swift */,
+				BDB77A5A206B3F57001925D0 /* MessagePackKeyedEncodingContainer.swift */,
+				BDB77A56206B3F57001925D0 /* MessagePackSingleValueEncodingContainer.swift */,
+				BDB77A59206B3F57001925D0 /* MessagePackUnkeyedEncodingContainer.swift */,
+				BDB77A58206B3F57001925D0 /* MessagePackStorage.swift */,
+			);
+			path = Encoder;
+			sourceTree = "<group>";
+		};
+		BDB77A89206B67A8001925D0 /* Codable */ = {
+			isa = PBXGroup;
+			children = (
+				BDB77A8B206B6ADC001925D0 /* MessagePackEncoderTests.swift */,
+				BDB77A8A206B6ADC001925D0 /* MessagePackDecoderTests.swift */,
+				BDB77A96206B6B14001925D0 /* ModelProtocol.swift */,
+				BDB77A97206B6B14001925D0 /* SingleTypeModels.swift */,
+				BDB77A92206B6B14001925D0 /* SingleOptionalTypeModels.swift */,
+				BDB77A94206B6B14001925D0 /* Models.swift */,
+				BDB77A95206B6B14001925D0 /* OptionalModels.swift */,
+			);
+			path = Codable;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -571,13 +696,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDB77A60206B3F57001925D0 /* MessagePackKeyedDecodingContainer.swift in Sources */,
 				825321A41EFFCA0D00914B55 /* Unpack.swift in Sources */,
+				BDB77A7C206B3F57001925D0 /* MessagePackKeyedEncodingContainer.swift in Sources */,
+				BDB77A78206B3F57001925D0 /* MessagePackUnkeyedEncodingContainer.swift in Sources */,
+				BDB77A68206B3F57001925D0 /* MessagePackSingleValueDecodingContainer.swift in Sources */,
 				825321A31EFFCA0D00914B55 /* Subdata.swift in Sources */,
 				825321A11EFFCA0D00914B55 /* MessagePack.swift in Sources */,
 				825321A01EFFCA0D00914B55 /* LiteralConvertibles.swift in Sources */,
+				BDB77A74206B3F57001925D0 /* MessagePackStorage.swift in Sources */,
 				8253219F1EFFCA0D00914B55 /* ConvenienceProperties.swift in Sources */,
+				BDB77A70206B3F57001925D0 /* _MessagePackEncoder.swift in Sources */,
+				BDB77A5C206B3F57001925D0 /* MessagePackUnkeyedDecodingContainer.swift in Sources */,
 				8253219E1EFFCA0D00914B55 /* ConvenienceInitializers.swift in Sources */,
+				BDB77A85206B40FF001925D0 /* MessagePackRepresentable.swift in Sources */,
+				BDB77A6C206B3F57001925D0 /* MessagePackSingleValueEncodingContainer.swift in Sources */,
 				825321A21EFFCA0D00914B55 /* Pack.swift in Sources */,
+				BDB77A80206B3F57001925D0 /* MessagePackEncoder.swift in Sources */,
+				BDB77A64206B3F57001925D0 /* MessagePackDecoder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -586,15 +722,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				825321C31EFFCA1C00914B55 /* IntegerTests.swift in Sources */,
+				BDB77AA7206B6B14001925D0 /* SingleTypeModels.swift in Sources */,
 				825321C21EFFCA1C00914B55 /* HashValueTests.swift in Sources */,
+				BDB77A8C206B6ADC001925D0 /* MessagePackDecoderTests.swift in Sources */,
 				825321C11EFFCA1C00914B55 /* FloatTests.swift in Sources */,
 				825321BB1EFFCA1C00914B55 /* DescriptionTests.swift in Sources */,
 				825321B91EFFCA1C00914B55 /* ConvenienceInitializersTests.swift in Sources */,
 				825321BF1EFFCA1C00914B55 /* ExtendedTests.swift in Sources */,
 				825321C61EFFCA1C00914B55 /* StringTests.swift in Sources */,
+				BDB77AA1206B6B14001925D0 /* OptionalModels.swift in Sources */,
 				825321BC1EFFCA1C00914B55 /* DoubleTests.swift in Sources */,
 				825321C81EFFCA1C00914B55 /* TrueTests.swift in Sources */,
+				BDB77AA4206B6B14001925D0 /* ModelProtocol.swift in Sources */,
+				BDB77A9E206B6B14001925D0 /* Models.swift in Sources */,
+				BDB77A98206B6B14001925D0 /* SingleOptionalTypeModels.swift in Sources */,
 				825321B71EFFCA1C00914B55 /* ArrayTests.swift in Sources */,
+				BDB77A8F206B6ADC001925D0 /* MessagePackEncoderTests.swift in Sources */,
 				825321B81EFFCA1C00914B55 /* BinaryTests.swift in Sources */,
 				825321BA1EFFCA1C00914B55 /* ConveniencePropertiesTests.swift in Sources */,
 				825321C41EFFCA1C00914B55 /* MapTests.swift in Sources */,
@@ -610,13 +753,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDB77A63206B3F57001925D0 /* MessagePackKeyedDecodingContainer.swift in Sources */,
 				8253224B1EFFCBC700914B55 /* Unpack.swift in Sources */,
+				BDB77A7F206B3F57001925D0 /* MessagePackKeyedEncodingContainer.swift in Sources */,
+				BDB77A7B206B3F57001925D0 /* MessagePackUnkeyedEncodingContainer.swift in Sources */,
+				BDB77A6B206B3F57001925D0 /* MessagePackSingleValueDecodingContainer.swift in Sources */,
 				8253224A1EFFCBC700914B55 /* Subdata.swift in Sources */,
 				825322481EFFCBC700914B55 /* MessagePack.swift in Sources */,
 				825322471EFFCBC700914B55 /* LiteralConvertibles.swift in Sources */,
+				BDB77A77206B3F57001925D0 /* MessagePackStorage.swift in Sources */,
 				825322461EFFCBC700914B55 /* ConvenienceProperties.swift in Sources */,
+				BDB77A73206B3F57001925D0 /* _MessagePackEncoder.swift in Sources */,
+				BDB77A5F206B3F57001925D0 /* MessagePackUnkeyedDecodingContainer.swift in Sources */,
 				825322451EFFCBC700914B55 /* ConvenienceInitializers.swift in Sources */,
+				BDB77A88206B40FF001925D0 /* MessagePackRepresentable.swift in Sources */,
+				BDB77A6F206B3F57001925D0 /* MessagePackSingleValueEncodingContainer.swift in Sources */,
 				825322491EFFCBC700914B55 /* Pack.swift in Sources */,
+				BDB77A83206B3F57001925D0 /* MessagePackEncoder.swift in Sources */,
+				BDB77A67206B3F57001925D0 /* MessagePackDecoder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -624,13 +778,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDB77A62206B3F57001925D0 /* MessagePackKeyedDecodingContainer.swift in Sources */,
 				825322441EFFCBC700914B55 /* Unpack.swift in Sources */,
+				BDB77A7E206B3F57001925D0 /* MessagePackKeyedEncodingContainer.swift in Sources */,
+				BDB77A7A206B3F57001925D0 /* MessagePackUnkeyedEncodingContainer.swift in Sources */,
+				BDB77A6A206B3F57001925D0 /* MessagePackSingleValueDecodingContainer.swift in Sources */,
 				825322431EFFCBC700914B55 /* Subdata.swift in Sources */,
 				825322411EFFCBC700914B55 /* MessagePack.swift in Sources */,
 				825322401EFFCBC700914B55 /* LiteralConvertibles.swift in Sources */,
+				BDB77A76206B3F57001925D0 /* MessagePackStorage.swift in Sources */,
 				8253223F1EFFCBC700914B55 /* ConvenienceProperties.swift in Sources */,
+				BDB77A72206B3F57001925D0 /* _MessagePackEncoder.swift in Sources */,
+				BDB77A5E206B3F57001925D0 /* MessagePackUnkeyedDecodingContainer.swift in Sources */,
 				8253223E1EFFCBC700914B55 /* ConvenienceInitializers.swift in Sources */,
+				BDB77A87206B40FF001925D0 /* MessagePackRepresentable.swift in Sources */,
+				BDB77A6E206B3F57001925D0 /* MessagePackSingleValueEncodingContainer.swift in Sources */,
 				825322421EFFCBC700914B55 /* Pack.swift in Sources */,
+				BDB77A82206B3F57001925D0 /* MessagePackEncoder.swift in Sources */,
+				BDB77A66206B3F57001925D0 /* MessagePackDecoder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -639,15 +804,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				825322281EFFCBC400914B55 /* ConveniencePropertiesTests.swift in Sources */,
+				BDB77AA9206B6B14001925D0 /* SingleTypeModels.swift in Sources */,
 				8253222E1EFFCBC400914B55 /* FalseTests.swift in Sources */,
+				BDB77A8E206B6ADC001925D0 /* MessagePackDecoderTests.swift in Sources */,
 				825322291EFFCBC400914B55 /* DescriptionTests.swift in Sources */,
 				825322361EFFCBC400914B55 /* TrueTests.swift in Sources */,
 				8253222D1EFFCBC400914B55 /* ExtendedTests.swift in Sources */,
 				825322321EFFCBC400914B55 /* MapTests.swift in Sources */,
 				8253222B1EFFCBC400914B55 /* EqualityTests.swift in Sources */,
+				BDB77AA3206B6B14001925D0 /* OptionalModels.swift in Sources */,
 				825322341EFFCBC400914B55 /* StringTests.swift in Sources */,
 				825322311EFFCBC400914B55 /* IntegerTests.swift in Sources */,
+				BDB77AA6206B6B14001925D0 /* ModelProtocol.swift in Sources */,
+				BDB77AA0206B6B14001925D0 /* Models.swift in Sources */,
+				BDB77A9A206B6B14001925D0 /* SingleOptionalTypeModels.swift in Sources */,
 				825322271EFFCBC400914B55 /* ConvenienceInitializersTests.swift in Sources */,
+				BDB77A91206B6ADC001925D0 /* MessagePackEncoderTests.swift in Sources */,
 				8253222C1EFFCBC400914B55 /* ExampleTests.swift in Sources */,
 				825322301EFFCBC400914B55 /* HashValueTests.swift in Sources */,
 				825322261EFFCBC400914B55 /* BinaryTests.swift in Sources */,
@@ -663,13 +835,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDB77A61206B3F57001925D0 /* MessagePackKeyedDecodingContainer.swift in Sources */,
 				8253223D1EFFCBC700914B55 /* Unpack.swift in Sources */,
+				BDB77A7D206B3F57001925D0 /* MessagePackKeyedEncodingContainer.swift in Sources */,
+				BDB77A79206B3F57001925D0 /* MessagePackUnkeyedEncodingContainer.swift in Sources */,
+				BDB77A69206B3F57001925D0 /* MessagePackSingleValueDecodingContainer.swift in Sources */,
 				8253223C1EFFCBC700914B55 /* Subdata.swift in Sources */,
 				8253223A1EFFCBC700914B55 /* MessagePack.swift in Sources */,
 				825322391EFFCBC700914B55 /* LiteralConvertibles.swift in Sources */,
+				BDB77A75206B3F57001925D0 /* MessagePackStorage.swift in Sources */,
 				825322381EFFCBC700914B55 /* ConvenienceProperties.swift in Sources */,
+				BDB77A71206B3F57001925D0 /* _MessagePackEncoder.swift in Sources */,
+				BDB77A5D206B3F57001925D0 /* MessagePackUnkeyedDecodingContainer.swift in Sources */,
 				825322371EFFCBC700914B55 /* ConvenienceInitializers.swift in Sources */,
+				BDB77A86206B40FF001925D0 /* MessagePackRepresentable.swift in Sources */,
+				BDB77A6D206B3F57001925D0 /* MessagePackSingleValueEncodingContainer.swift in Sources */,
 				8253223B1EFFCBC700914B55 /* Pack.swift in Sources */,
+				BDB77A81206B3F57001925D0 /* MessagePackEncoder.swift in Sources */,
+				BDB77A65206B3F57001925D0 /* MessagePackDecoder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -678,15 +861,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				825322161EFFCBC400914B55 /* ConveniencePropertiesTests.swift in Sources */,
+				BDB77AA8206B6B14001925D0 /* SingleTypeModels.swift in Sources */,
 				8253221C1EFFCBC400914B55 /* FalseTests.swift in Sources */,
+				BDB77A8D206B6ADC001925D0 /* MessagePackDecoderTests.swift in Sources */,
 				825322171EFFCBC400914B55 /* DescriptionTests.swift in Sources */,
 				825322241EFFCBC400914B55 /* TrueTests.swift in Sources */,
 				8253221B1EFFCBC400914B55 /* ExtendedTests.swift in Sources */,
 				825322201EFFCBC400914B55 /* MapTests.swift in Sources */,
 				825322191EFFCBC400914B55 /* EqualityTests.swift in Sources */,
+				BDB77AA2206B6B14001925D0 /* OptionalModels.swift in Sources */,
 				825322221EFFCBC400914B55 /* StringTests.swift in Sources */,
 				8253221F1EFFCBC400914B55 /* IntegerTests.swift in Sources */,
+				BDB77AA5206B6B14001925D0 /* ModelProtocol.swift in Sources */,
+				BDB77A9F206B6B14001925D0 /* Models.swift in Sources */,
+				BDB77A99206B6B14001925D0 /* SingleOptionalTypeModels.swift in Sources */,
 				825322151EFFCBC400914B55 /* ConvenienceInitializersTests.swift in Sources */,
+				BDB77A90206B6ADC001925D0 /* MessagePackEncoderTests.swift in Sources */,
 				8253221A1EFFCBC400914B55 /* ExampleTests.swift in Sources */,
 				8253221E1EFFCBC400914B55 /* HashValueTests.swift in Sources */,
 				825322141EFFCBC400914B55 /* BinaryTests.swift in Sources */,
